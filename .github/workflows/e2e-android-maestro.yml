@@ -1,6 +1,6 @@
 # 🔗 Links:
-# Source file: https://tulparyazilim.github.io/expo-starter-template/blob/master/.github/workflows/e2e-android.yml
-# End-to-end testing: https://tulparyazilim.github.io/expo-starter-template/testing/end-to-end-testing/
+# Source file: https://github.com/Tulpar-Yazilim/expo-starter-template/blob/master/.github/workflows/e2e-android.yml
+# End-to-end testing: https://tulpar-yazilim.github.io/expo-starter-template/testing/end-to-end-testing/
 
 # ✍️ Description:
 # This workflow is used to run end-to-end tests on Android using Maestro Cloud.

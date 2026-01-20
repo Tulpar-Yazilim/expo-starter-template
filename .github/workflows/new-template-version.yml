@@ -1,6 +1,6 @@
 # 🔗 Links:
 # Source file: https://github.com/Tulpar-Yazilim/expo-starter-template/blob/master/.github/workflows/lint-ts.yml
-# Starter releasing process: https://tulparyazilim.github.io/expo-starter-template/ci-cd/app-releasing-process/
+# Starter releasing process: https://tulpar-yazilim.github.io/expo-starter-template/ci-cd/app-releasing-process/
 
 # ✍️ Description:
 # This workflow is used to create a new version of the template and push a new tag to the repo.

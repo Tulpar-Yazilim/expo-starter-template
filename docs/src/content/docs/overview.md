@@ -116,4 +116,4 @@ In addition to maintaining this starter kit, we are also available to work on cu
 
 ## ❓ FAQ
 
-If you have any questions about the starter and want answers, please check out the [Github repo](https://tulparyazilim.github.io/expo-starter-template/discussions).
+If you have any questions about the starter and want answers, please check out the [Github repo](hhttps://github.com/Tulpar-Yazilim/expo-starter-template/discussions).

@@ -38,7 +38,7 @@ const showMoreDetails = (projectName) => {
     `   \`cd ${projectName}\` \n`,
     '   iOS     :  `yarn ios` \n',
     '   Android :  `yarn android` \n\n',
-    '📚 Template Documentation: https://tulparyazilim.github.io/expo-starter-template'
+    '📚 Template Documentation: https://tulpar-yazilim.github.io/expo-starter-template'
   );
 };
 

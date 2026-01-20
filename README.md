@@ -41,15 +41,15 @@ This template brings several key advantages. It provides our team with a consist
 
 ## ✍️ Documentation 🚧 UNDER CONSTRUCTION 🚧
 
-- [Create new project ](https://tulparyazilim.github.io/expo-starter-template/getting-started/create-new-app/)
-- [Rules and Conventions](https://tulparyazilim.github.io/expo-starter-template/getting-started/rules-and-conventions/)
-- [Project structure](https://tulparyazilim.github.io/expo-starter-template/getting-started/project-structure/)
-- [Environment vars and config](https://tulparyazilim.github.io/expo-starter-template/getting-started/environment-vars-config/)
-- [UI and Theming](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/ui-theming/)
-- [Components](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/components/)
-- [Forms](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/forms/)
-- [Data fetching](https://tulparyazilim.github.io/expo-starter-template/guides/data-fetching/)
-- [Contribute to starter](https://tulparyazilim.github.io/expo-starter-template/how-to-contribute/)
+- [Create new project ](https://tulpar-yazilim.github.io/expo-starter-template/getting-started/create-new-app/)
+- [Rules and Conventions](https://tulpar-yazilim.github.io/expo-starter-template/getting-started/rules-and-conventions/)
+- [Project structure](https://tulpar-yazilim.github.io/expo-starter-template/getting-started/project-structure/)
+- [Environment vars and config](https://tulpar-yazilim.github.io/expo-starter-template/getting-started/environment-vars-config/)
+- [UI and Theming](https://tulpar-yazilim.github.io/expo-starter-template/ui-and-theme/ui-theming/)
+- [Components](https://tulpar-yazilim.github.io/expo-starter-template/ui-and-theme/components/)
+- [Forms](https://tulpar-yazilim.github.io/expo-starter-template/ui-and-theme/forms/)
+- [Data fetching](https://tulpar-yazilim.github.io/expo-starter-template/guides/data-fetching/)
+- [Contribute to starter](https://tulpar-yazilim.github.io/expo-starter-template/how-to-contribute/)
 
 ## 🧑‍💻 Stay up to date
 

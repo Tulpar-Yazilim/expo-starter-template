@@ -1,5 +1,5 @@
 # 🔗 Links:
-# Source file: https://tulparyazilim.github.io/expo-starter-template/blob/master/.github/project-workflows/sync-with-template.yml
+# Source file: https://github.com/Tulpar-Yazilim/expo-starter-template/blob/master/.github/project-workflows/sync-with-template.yml
 
 # ✍️ Description:
 # This workflow is used to keep the project up to date with the latest version of the template.
@@ -175,6 +175,6 @@ jobs:
         if: ${{ env.BRANCH_EXISTS == 'true' && env.PR_EXISTS == 'false' }}
         run: |
           cd project
-          gh pr create --title "chore: update template to ${{ env.TEMPLATE_UPDATE_VERSION }}" --body "Integrating latest changes from [Tulpar-Yazilim/expo-starter-template@${{ env.TEMPLATE_UPDATE_VERSION }}](https://tulparyazilim.github.io/expo-starter-template/releases/tag/${{ env.TEMPLATE_UPDATE_VERSION }})" --head ${{ env.BRANCH_NAME }}
+          gh pr create --title "chore: update template to ${{ env.TEMPLATE_UPDATE_VERSION }}" --body "Integrating latest changes from [Tulpar-Yazilim/expo-starter-template@${{ env.TEMPLATE_UPDATE_VERSION }}](https://github.com/Tulpar-Yazilim/expo-starter-template/releases/tag/${{ env.TEMPLATE_UPDATE_VERSION }})" --head ${{ env.BRANCH_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
