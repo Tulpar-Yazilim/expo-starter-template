@@ -1,5 +1,5 @@
 # 🔗 Links:
-# Source file: https://github.com/rootstrap/react-native-template/blob/master/.github/workflows/new-cli-version.yml
+# Source file: https://tulparyazilim.github.io/expo-starter-template/blob/master/.github/workflows/new-cli-version.yml
 
 # ✍️ Description:
 # This workflow is used to create a new version of the CLI and publish it to the npm registry.
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: CLI
-      url: https://www.npmjs.com/package/create-rootstrap-rn-app/v/${{ env.NEW_VERSION }}
+      url: https://www.npmjs.com/package/create-tp-expo-starter/v/${{ env.NEW_VERSION }}
     permissions:
       contents: write
     steps:
@@ -56,12 +56,12 @@ jobs:
         run: |
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-      - name: 📦 Setup Node + PNPM
-        uses: ./.github/actions/setup-node-pnpm-install
+      - name: 📦 Setup Node + YARN
+        uses: ./.github/actions/setup-node-yarn-install
       - name: 📦 Install CLI Dependencies
         run: |
           cd cli
-          pnpm install --frozen-lockfile
+          yarn install --frozen-lockfile
       - name: 📦 Bump release version
         run: |
           cd cli
@@ -74,13 +74,13 @@ jobs:
           git add "cli/package.json"
           git commit -m "build(cli): release CLI v${{ env.NEW_VERSION }}"
       - name: 🔑 Set publishing config
-        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
+        run: yarn config set '//registry.npmjs.org/:_authToken' "${NPM_TOKEN}"
         env:
           NPM_TOKEN: ${{secrets.NPM_TOKEN}}
       - name: 📦 Publish to NPM registry
         run: |
           cd cli
-          pnpm publish --verbose --tag ${{ env.RELEASE_TAG }}
+          yarn publish --verbose --tag ${{ env.RELEASE_TAG }}
       - name: 🔗 Push changes to repository
         run: |
           git push origin && git push --tags

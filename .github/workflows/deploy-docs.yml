@@ -23,7 +23,7 @@ jobs:
         uses: withastro/action@v2
         with:
           path: docs # The root location of your Astro project inside the repository.
-          package-manager: pnpm@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile.
+          package-manager: yarn@latest # The Node package manager that should be used to install dependencies and build your site. Automatically detected based on your lockfile.
 
   deploy:
     needs: build

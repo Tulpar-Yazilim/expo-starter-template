@@ -5,7 +5,6 @@ import React from 'react';
 import { showMessage } from 'react-native-flash-message';
 
 import { useDeleteUser, useUser } from '@/api/auth/use-user';
-import { useAuth } from '@/components/providers/auth';
 import { DeleteAccountItem } from '@/components/settings/delete-account-item';
 import { Item } from '@/components/settings/item';
 import { ItemsContainer } from '@/components/settings/items-container';
@@ -19,15 +18,14 @@ import {
   View,
 } from '@/components/ui';
 import { Website } from '@/components/ui/icons';
-import { translate } from '@/lib';
+import { signOut, translate } from '@/lib';
 import { Env } from '@/lib/env';
 
 export default function Settings() {
-  const { logout } = useAuth();
   const { data: userData } = useUser();
   const { mutateAsync: deleteUserAsync } = useDeleteUser({
     onSuccess: () => {
-      logout();
+      signOut();
     },
     onError: (error) => showMessage({ message: error.message, type: 'danger' }),
   });
@@ -76,7 +74,7 @@ export default function Settings() {
               href={{
                 pathname: '/www',
                 params: {
-                  url: Env.TERMS_OF_SERVICE_URL,
+                  url: 'https://www.tulparyazilim.com.tr/en',
                   title: translate('settings.terms'),
                 },
               }}
@@ -88,7 +86,7 @@ export default function Settings() {
               href={{
                 pathname: '/www',
                 params: {
-                  url: Env.WEBSITE_URL,
+                  url: 'https://www.tulparyazilim.com.tr/en',
                   title: translate('settings.website'),
                 },
               }}
@@ -107,7 +105,7 @@ export default function Settings() {
           <View className="my-8">
             <ItemsContainer>
               <DeleteAccountItem onDelete={handleDeleteUser} />
-              <Item text="settings.logout" onPress={logout} />
+              <Item text="settings.logout" onPress={signOut} />
             </ItemsContainer>
           </View>
         </View>

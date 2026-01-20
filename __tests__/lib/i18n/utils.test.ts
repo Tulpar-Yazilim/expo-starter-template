@@ -1,10 +1,9 @@
 import { use } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from '../../../src/translations/en.json';
-import { storage } from '../../../src/lib/storage';
+import en from '../../../src/translations/en.json'; 
 import type { TxKeyPath } from '../../../src/lib/i18n/utils';
-import { getLanguage, translate } from '../../../src/lib/i18n/utils';
+import { translate } from '../../../src/lib/i18n/utils';
 
 jest.mock('../../../src/lib/storage', () => ({
   storage: {
@@ -27,14 +26,6 @@ use(initReactI18next).init({
   },
 
   resources: { en: { translationsNS: en } },
-});
-
-describe('getLanguage', () => {
-  it('should call storage.getString with LOCAL', () => {
-    const lang = getLanguage();
-    expect(storage.getString).toHaveBeenCalledWith('local');
-    expect(lang).toBe('en');
-  });
 });
 
 describe('translate', () => {

@@ -8,7 +8,6 @@
       "autoIncrement": true,
       "channel": "production",
       "distribution": "store",
-      "pnpm": "9.12.3",
       "ios": {
         "image": "latest"
       },
@@ -27,7 +26,6 @@
       "autoIncrement": true,
       "channel": "staging",
       "distribution": "store",
-      "pnpm": "9.12.3",
       "ios": {
         "image": "latest"
       },
@@ -46,7 +44,6 @@
       "autoIncrement": true,
       "channel": "qa",
       "distribution": "store",
-      "pnpm": "9.12.3",
       "ios": {
         "image": "latest"
       },
@@ -65,7 +62,6 @@
       "autoIncrement": true,
       "developmentClient": true,
       "distribution": "store",
-      "pnpm": "9.12.3",
       "ios": {
         "image": "latest"
       },

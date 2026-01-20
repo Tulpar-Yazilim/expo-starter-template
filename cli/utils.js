@@ -3,7 +3,7 @@ const { exec } = require('child_process');
 const { consola } = require('consola');
 
 const UPSTREAM_REPOSITORY = "obytes/react-native-template-obytes";
-const TEMPLATE_REPOSITORY = "rootstrap/react-native-template";
+const TEMPLATE_REPOSITORY = "Tulpar-Yazilim/expo-starter-template";
 
 const execShellCommand = (cmd) => {
   return new Promise((resolve, reject) => {
@@ -36,9 +36,9 @@ const showMoreDetails = (projectName) => {
     'Your project is ready to go! \n\n\n',
     '🚀 To get started, run the following commands: \n\n',
     `   \`cd ${projectName}\` \n`,
-    '   iOS     :  `pnpm ios` \n',
-    '   Android :  `pnpm android` \n\n',
-    '📚 Template Documentation: https://rootstrap.github.io/react-native-template'
+    '   iOS     :  `yarn ios` \n',
+    '   Android :  `yarn android` \n\n',
+    '📚 Template Documentation: https://tulparyazilim.github.io/expo-starter-template'
   );
 };
 

@@ -1,8 +1,7 @@
 import { SplashScreen } from 'expo-router';
 
 import TabLayout from '@/app/(app)/_layout';
-import { useAuth } from '@/components/providers/auth';
-import { useIsFirstTime } from '@/lib/hooks/use-is-first-time';
+import { useAuthProvider, useIsFirstTime } from '@/lib';
 import { render } from '@/lib/test-utils';
 
 // Mock all dependencies
@@ -10,11 +9,8 @@ jest.mock('@dev-plugins/react-query', () => ({
   useReactQueryDevTools: jest.fn(),
 }));
 
-jest.mock('@/components/providers/auth', () => ({
+jest.mock('@/lib', () => ({
   useAuth: jest.fn(),
-}));
-
-jest.mock('@/lib/hooks/use-is-first-time', () => ({
   useIsFirstTime: jest.fn(),
 }));
 
@@ -41,7 +37,9 @@ jest.mock('@/components/ui/icons', () => ({
   Style: () => null,
 }));
 
-const mockUseAuth = useAuth as jest.MockedFunction<typeof useAuth>;
+const mockUseAuth = useAuthProvider as jest.MockedFunction<
+  typeof useAuthProvider
+>;
 const mockUseIsFirstTime = useIsFirstTime as jest.MockedFunction<
   typeof useIsFirstTime
 >;
@@ -50,33 +48,27 @@ const mockSplashScreen = SplashScreen as jest.Mocked<typeof SplashScreen>;
 const setupFirstTimeUser = () => {
   mockUseIsFirstTime.mockReturnValue([true, jest.fn()]);
   mockUseAuth.mockReturnValue({
-    token: null,
     isAuthenticated: false,
     loading: false,
     ready: true,
-    logout: jest.fn(),
   });
 };
 
 const setupUnauthenticatedUser = () => {
   mockUseIsFirstTime.mockReturnValue([false, jest.fn()]);
   mockUseAuth.mockReturnValue({
-    token: null,
     isAuthenticated: false,
     loading: false,
     ready: true,
-    logout: jest.fn(),
   });
 };
 
 const setupAuthenticatedUser = () => {
   mockUseIsFirstTime.mockReturnValue([false, jest.fn()]);
   mockUseAuth.mockReturnValue({
-    token: 'mock-token',
     isAuthenticated: true,
     loading: false,
     ready: true,
-    logout: jest.fn(),
   });
 };
 
@@ -107,11 +99,9 @@ describe('TabLayout', () => {
   it('should hide splash screen when auth is not ready', () => {
     mockUseIsFirstTime.mockReturnValue([false, jest.fn()]);
     mockUseAuth.mockReturnValue({
-      token: 'mock-token',
       isAuthenticated: true,
       loading: false,
       ready: false,
-      logout: jest.fn(),
     });
     render(<TabLayout />);
     expect(mockSplashScreen.hideAsync).toHaveBeenCalled();
@@ -120,11 +110,9 @@ describe('TabLayout', () => {
   it('should not hide splash screen when auth is ready', () => {
     mockUseIsFirstTime.mockReturnValue([false, jest.fn()]);
     mockUseAuth.mockReturnValue({
-      token: 'mock-token',
       isAuthenticated: true,
       loading: false,
       ready: true,
-      logout: jest.fn(),
     });
     render(<TabLayout />);
     expect(mockSplashScreen.hideAsync).not.toHaveBeenCalled();

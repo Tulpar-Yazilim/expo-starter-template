@@ -86,7 +86,7 @@ describe('storage utilities', () => {
     it('should delete the key from storage', async () => {
       await removeItem('test-key');
 
-      expect(mockStorage.delete).toHaveBeenCalledWith('test-key');
+      expect(mockStorage.remove).toHaveBeenCalledWith('test-key');
     });
   });
 });

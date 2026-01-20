@@ -42,16 +42,16 @@ A simple npm script that run np package that helps us to manage the version of t
 {
   "scripts": {
     "app-release": "cross-env SKIP_BRANCH_PROTECTION=true np --no-publish --no-cleanup --no-release-draft",
-    "version": "pnpm run prebuild && git add ."
+    "version": "yarn prebuild && git add ."
   }
 }
 ```
 
-If you run `pnpm run app-release`, it will ask you to choose the type of release (major, minor, patch). based on the type of release, it will update the version inside `package.json`.
+If you run `yarn app-release`, it will ask you to choose the type of release (major, minor, patch). based on the type of release, it will update the version inside `package.json`.
 
 As we use the version from package.json as app version inside `app-config.ts`, we just need to run the prebuild script to update App version inside the `ios` and `android` folders. The prebuild script will be executed automatically using a `version` script inside `package.json` that will handle the task for us. It will also add the changes to the commit that will be pushed to GitHub and create a new tag with the version number.
 
-So technically, we just need to run `pnpm run app-release` and it will handle the rest for us. from updating native app version to pushing a new tag to GitHub.
+So technically, we just need to run `yarn app-release` and it will handle the rest for us. from updating native app version to pushing a new tag to GitHub.
 
 ### GitHub actions and Expo EAS workflows
 
@@ -67,7 +67,7 @@ In conclusion, when you want to release a new QA version, manually execute `new-
 
 ## Setup Release Process to your app
 
-To setup the release process for your app, you need to follow the steps from our [EAS instructions file](https://github.com/rootstrap/react-native-template/blob/master/EAS.md).
+To setup the release process for your app, you need to follow the steps from our [EAS instructions file](https://github.com/Tulpar-Yazilim/expo-starter-template/blob/master/EAS.md).
 
 ## Create new release
 

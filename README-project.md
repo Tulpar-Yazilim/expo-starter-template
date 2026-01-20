@@ -1,8 +1,8 @@
 <h1 align="center">
-  <img alt="logo" src="./assets/RootstrapIcon.jpg" width="124px" style="border-radius:10px"/><br/>
+  <img alt="logo" src="./assets/tulpar.jpg" width="124px" style="border-radius:10px"/><br/>
 Mobile App </h1>
 
-> This Project is based on [Rootstrap React Native Template](https://github.com/rootstrap/react-native-template)
+> This Project is based on [Expo Starter Template](https://github.com/Tulpar-Yazilim/expo-starter-template)
 
 ## Requirements
 
@@ -10,7 +10,7 @@ Mobile App </h1>
 - [Node.js LTS release](https://nodejs.org/en/)
 - [Git](https://git-scm.com/)
 - [Watchman](https://facebook.github.io/watchman/docs/install#buildinstall), required only for macOS or Linux users
-- [Pnpm](https://pnpm.io/installation)
+- [Yarn](https://yarnpkg.com/getting-started/install)
 - [Cursor](https://www.cursor.com/) or [VS Code Editor](https://code.visualstudio.com/download) ⚠️ Make sure to install all recommended extension from `.vscode/extensions.json`
 
 ## 👋 Quick start
@@ -22,37 +22,33 @@ git clone https://github.com/user/repo-name
 
 cd ./repo-name
 
-pnpm install
+yarn install
 ```
 
 To run the app on ios
 
 ```sh
-pnpm ios
+yarn ios
 ```
 
 To run the app on Android
 
 ```sh
-pnpm android
+yarn android
 ```
 
 To build your app locally you can run any of the build scripts with --local.
 
-`pnpm build:development:ios --local`
-
-### SonarQube setup
-
-SonarQube is an open-source platform for continuous inspection of code quality. It performs automatic reviews to detect bugs, code smells, and security vulnerabilities. Rootstrap has a SonarQube instance to improve the quality of the software we develop. On each PR, a GitHub Action is triggered to perform the analysis. To set up SonarQube correctly, you need to add the `SONAR_TOKEN`, `SONAR_URL`, and `SONAR_PROJECT` secrets to the repository. Additionally, you must select the quality gate named `ReactNativeTemplate` for your project on SonarQube. In case you're using this project outside Rootstrap and you're not planning to use SonarQube the sonar scanner [workflow](.github/workflows/sonar.yml) should be deleted.
+`yarn build:development:ios --local`
 
 ## ✍️ Documentation
 
-- [Rules and Conventions](https://rootstrap.github.io/react-native-template/getting-started/rules-and-conventions/)
-- [Project structure](https://rootstrap.github.io/react-native-template/getting-started/project-structure)
-- [Environment vars and config](https://rootstrap.github.io/react-native-template/getting-started/environment-vars-config)
-- [UI and Theming](https://rootstrap.github.io/react-native-template/ui-and-theme/ui-theming)
-- [Components](https://rootstrap.github.io/react-native-template/ui-and-theme/components)
-- [Forms](https://rootstrap.github.io/react-native-template/ui-and-theme/forms/)
-- [Data fetching](https://rootstrap.github.io/react-native-template/guides/data-fetching)
-- [Contribute to starter](https://rootstrap.github.io/react-native-template/how-to-contribute/)
+- [Rules and Conventions](https://tulparyazilim.github.io/expo-starter-template/getting-started/rules-and-conventions/)
+- [Project structure](https://tulparyazilim.github.io/expo-starter-template/getting-started/project-structure)
+- [Environment vars and config](https://tulparyazilim.github.io/expo-starter-template/getting-started/environment-vars-config)
+- [UI and Theming](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/ui-theming)
+- [Components](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/components)
+- [Forms](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/forms/)
+- [Data fetching](https://tulparyazilim.github.io/expo-starter-template/guides/data-fetching)
+- [Contribute to starter](https://tulparyazilim.github.io/expo-starter-template/how-to-contribute/)
 - [Distribute using EAS](/EAS.md)

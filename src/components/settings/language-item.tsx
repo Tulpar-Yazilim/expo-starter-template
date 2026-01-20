@@ -2,20 +2,20 @@ import React, { useCallback, useMemo } from 'react';
 
 import type { OptionType } from '@/components/ui';
 import { Options, useModal } from '@/components/ui';
-import { translate, useSelectedLanguage } from '@/lib';
+import { translate, useAppStore } from '@/lib';
 import type { Language } from '@/lib/i18n/resources';
 
 import { Item } from './item';
 
 export const LanguageItem = () => {
-  const { language, setLanguage } = useSelectedLanguage();
+  const { language, changeLanguage } = useAppStore();
   const modal = useModal();
   const onSelect = useCallback(
     (option: OptionType) => {
-      setLanguage(option.value as Language);
+      changeLanguage(option.value as Language);
       modal.dismiss();
     },
-    [setLanguage, modal],
+    [changeLanguage, modal],
   );
 
   const langs = useMemo(

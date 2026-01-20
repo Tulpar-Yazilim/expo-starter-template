@@ -22,13 +22,13 @@ Then, there are two ways to start a build process using EAS:
 a. Running the `eas build` command in your terminal for the required environment:
 
 - For the Development environment:
-  - `pnpm build:development:android` and `pnpm build:development:ios`
+  - `yarn build:development:android` and `yarn build:development:ios`
 - For the QA environment:
-  - `pnpm build:qa:android` and `pnpm build:qa:ios`
+  - `yarn build:qa:android` and `yarn build:qa:ios`
 - For the Staging environment:
-  - `pnpm build:staging:android` and `pnpm build:staging:ios`
+  - `yarn build:staging:android` and `yarn build:staging:ios`
 - For the Production environment:
-  - `pnpm build:production:android` and `pnpm build:production:ios`
+  - `yarn build:production:android` and `yarn build:production:ios`
 
 b. Manually triggering the [EAS Build workflow](.github/workflows/eas-build.yml) from the repository's Actions tab.
 
@@ -41,13 +41,13 @@ After you've added the secrets, you can trigger the build by manually running th
 You can also run a local build by executing the following commands:
 
 - For the Development environment:
-  - `pnpm build:development:android --local` and `pnpm build:development:ios --local`
+  - `yarn build:development:android --local` and `yarn build:development:ios --local`
 - For the QA environment:
-  - `pnpm build:qa:android --local` and `pnpm build:qa:ios --local`
+  - `yarn build:qa:android --local` and `yarn build:qa:ios --local`
 - For the Staging environment:
-  - `pnpm build:staging:android --local` and `pnpm build:staging:ios --local`
+  - `yarn build:staging:android --local` and `yarn build:staging:ios --local`
 - For the Production environment:
-  - `pnpm build:production:android --local` and `pnpm build:production:ios --local`
+  - `yarn build:production:android --local` and `yarn build:production:ios --local`
 
 The only prerequisite is to have the corresponding environment file in the root folder of the project (`.env.development`, `.env.qa`, `.env.staging` or `.env.production`).
 
@@ -62,26 +62,26 @@ To submit an app to the Google Play Store, follow the steps in the [Uploading a 
 Once you've completed the guide, you'll be able to submit your EAS builds to the Google Play Store using the following commands:
 
 - For the Development environment:
-  - `pnpm submit:development:mobile --platform android`
+  - `yarn submit:development:mobile --platform android`
 - For the QA environment:
-  - `pnpm submit:qa:mobile --platform android`
+  - `yarn submit:qa:mobile --platform android`
 - For the Staging environment:
-  - `pnpm submit:staging:mobile --platform android`
+  - `yarn submit:staging:mobile --platform android`
 - For the Production environment:
-  - `pnpm submit:production:mobile --platform android`
+  - `yarn submit:production:mobile --platform android`
 
 ### Submit to the App Store
 
 First, ensure your credentials are configured correctly in EAS. Do this by running the following commands in your terminal:
 
 - For the Development environment:
-  - `pnpm credentials:development:ios`
+  - `yarn credentials:development:ios`
 - For the QA environment:
-  - `pnpm credentials:qa:ios`
+  - `yarn credentials:qa:ios`
 - For the Staging environment:
-  - `pnpm credentials:staging:ios`
+  - `yarn credentials:staging:ios`
 - For the Production environment:
-  - `pnpm credentials:production:ios`
+  - `yarn credentials:production:ios`
 
 Follow the prompts to authenticate and select your Apple Developer account.
 
@@ -96,13 +96,13 @@ To generate a new App Store Connect API Key, ensure your user has the necessary 
 Once you've configured the credentials in EAS, you'll be able to submit your builds to the App Store using the following commands:
 
 - For the Development environment:
-  - `pnpm submit:development:mobile --platform ios`
+  - `yarn submit:development:mobile --platform ios`
 - For the QA environment:
-  - `pnpm submit:qa:mobile --platform ios`
+  - `yarn submit:qa:mobile --platform ios`
 - For the Staging environment:
-  - `pnpm submit:staging:mobile --platform ios`
+  - `yarn submit:staging:mobile --platform ios`
 - For the Production environment:
-  - `pnpm submit:production:mobile --platform ios`
+  - `yarn submit:production:mobile --platform ios`
 
 ### Additional Resources
 

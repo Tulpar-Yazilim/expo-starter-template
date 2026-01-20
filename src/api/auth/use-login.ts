@@ -1,9 +1,11 @@
 import { createMutation } from 'react-query-kit';
 
+import { signIn } from '@/lib';
+
 import { client } from '../common';
 
 type Variables = {
-  email: string;
+  username: string;
   password: string;
   expiresInMins?: number;
 };
@@ -12,18 +14,24 @@ type Response = {
   id: number;
   username: string;
   email: string;
+  firstName: string;
+  lastName: string;
+  image: string;
   accessToken: string;
   refreshToken: string;
 };
 
 const login = async (variables: Variables) => {
   const { data } = await client({
-    url: '/v1/users/sign_in',
+    url: '/auth/login',
     method: 'POST',
     data: {
-      user: variables,
+      ...variables,
     },
   });
+  if (data && data.accessToken) {
+    signIn(data);
+  }
   return data;
 };
 
