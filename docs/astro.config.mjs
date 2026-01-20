@@ -1,7 +1,5 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
-import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
-import starlightLlmsTxt from 'starlight-llms-txt';
 
 const site = 'https://tulparyazilim.github.io';
 const base = 'expo-starter-template';
@@ -13,7 +11,7 @@ export default defineConfig({
   integrations: [
     starlight({
       title: 'Expo Starter Template',
-      plugins: [starlightLlmsTxt()],
+      plugins: [ ],
       description: `Your All-in-One Solution for Building Outstanding React Native/Expo Apps. From editor setup to store submission, we've got you covered!`,
       expressiveCode: {
         themes: ['dracula', 'solarized-light'],
@@ -166,10 +164,6 @@ export default defineConfig({
             {
               label: 'Overview',
               link: '/testing/overview/',
-            },
-            {
-              label: 'Unit Testing',
-              link: '/testing/unit-testing/',
             },
             {
               label: 'E2E Testing',
