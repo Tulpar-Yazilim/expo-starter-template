@@ -1,7 +1,7 @@
 import { use } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
-import en from '../../../src/translations/en.json'; 
+import en from '../../../src/translations/en.json';
 import type { TxKeyPath } from '../../../src/lib/i18n/utils';
 import { translate } from '../../../src/lib/i18n/utils';
 
