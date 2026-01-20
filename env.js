@@ -11,7 +11,7 @@
 /**
  * 1st part: Import packages and Load your env variables
  * we use dotenv to load the correct variables from the .env file based on the APP_ENV variable (default is development)
- * APP_ENV is passed as an inline variable while executing the command, for example: APP_ENV=staging pnpm build:android
+ * APP_ENV is passed as an inline variable while executing the command, for example: APP_ENV=staging yarn build:android
  */
 const z = require('zod');
 
@@ -76,17 +76,17 @@ require('dotenv').config({
  * Such as: bundle id, package name, app name.
  *
  * You can add them to the .env file but we think it's better to keep them here as as we use prefix to generate this values based on the APP_ENV
- * for example: if the APP_ENV is staging, the bundle id will be com.rootstrap.staging
+ * for example: if the APP_ENV is staging, the bundle id will be com.expostarter.staging
  */
 
 // TODO: Replace these values with your own values
 
-const BUNDLE_ID = 'com.rootstrap'; // ios bundle id
-const PACKAGE = 'com.rootstrap'; // android package name
-const NAME = 'RootstrapApp'; // app name
+const BUNDLE_ID = 'com.expostarter'; // ios bundle id
+const PACKAGE = 'com.expostarter'; // android package name
+const NAME = 'ExpoApp'; // app name
 const EXPO_ACCOUNT_OWNER = 'rsdevs'; // expo account owner
 const EAS_PROJECT_ID = '72fdf440-59f1-493d-96e3-4afad8d7a045'; // eas project id
-const SCHEME = 'RootstrapApp'; // app scheme
+const SCHEME = 'ExpoApp'; // app scheme
 
 /**
  * We declare a function withEnvSuffix that will add a suffix to the variable name based on the APP_ENV
@@ -135,18 +135,14 @@ const clientEnvSchema = z.object({
   VERSION: z.string(),
 
   // ADD YOUR CLIENT ENV VARS HERE
-  API_URL: z.string(),
-  VAR_NUMBER: z.number(),
-  VAR_BOOL: z.boolean(),
-  TERMS_OF_SERVICE_URL: z.string(),
-  WEBSITE_URL: z.string(),
+  API_URL: z.string().optional(),
 });
 
 const buildTimeEnvSchema = z.object({
   EXPO_ACCOUNT_OWNER: z.string(),
   EAS_PROJECT_ID: z.string(),
   // ADD YOUR BUILD TIME ENV VARS HERE
-  SECRET_KEY: z.string(),
+  SECRET_KEY: z.string().optional(),
 });
 
 /**
@@ -162,10 +158,6 @@ const _clientEnv = {
 
   // ADD YOUR ENV VARS HERE TOO
   API_URL: parseString(process.env.API_URL),
-  VAR_NUMBER: parseNumber(process.env.VAR_NUMBER),
-  VAR_BOOL: parseBoolean(process.env.VAR_BOOL),
-  WEBSITE_URL: parseString(process.env.WEBSITE_URL),
-  TERMS_OF_SERVICE_URL: parseString(process.env.TERMS_OF_SERVICE_URL),
 };
 
 /**

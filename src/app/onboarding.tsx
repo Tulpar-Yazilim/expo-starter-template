@@ -20,7 +20,7 @@ export default function Onboarding() {
       <View className="w-full flex-1">
         <Cover />
       </View>
-      <View className="justify-end">
+      <View className="justify-end px-5">
         <Text className="my-3 text-center text-5xl font-bold">
           {translate('onboarding.title')}
         </Text>

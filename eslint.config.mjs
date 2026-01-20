@@ -67,6 +67,7 @@ export default defineConfig([
       'react/jsx-fragments': ['error', 'syntax'],
       'react/jsx-no-useless-fragment': 'error',
       'react/no-children-prop': ['error', { allowFunctions: true }],
+      'react-hooks/exhaustive-deps': 'off',
       'no-nested-ternary': 'error',
       'no-unneeded-ternary': 'error',
       'prefer-template': 'error',
@@ -119,10 +120,6 @@ export default defineConfig([
       ...configs.recommended.rules,
       '@typescript-eslint/no-explicit-any': 'error',
       '@typescript-eslint/comma-dangle': 'off',
-      '@typescript-eslint/no-magic-numbers': [
-        'error',
-        { ignoreArrayIndexes: true, ignoreEnums: true, ignore: [-1, 0, 1] },
-      ],
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
       '@typescript-eslint/array-type': [
         'error',

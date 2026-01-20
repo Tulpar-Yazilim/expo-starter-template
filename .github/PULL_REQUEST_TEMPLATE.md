@@ -1,13 +1,9 @@
 <!---
 ❌❌❌
 WARNING!!!
-Make sure the base repository is `rootstrap/react-native-template` BEFORE creating the Pull Request.
+Make sure the base repository is `Tulpar-Yazilim/expo-starter-template` BEFORE creating the Pull Request.
 ❌❌❌
 -->
-
-#### Jira board reference:
-
-- [Jira_Card_Name](https://rootstrap.atlassian.net/browse/ABC-123)
 
 ---
 

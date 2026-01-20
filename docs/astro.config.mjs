@@ -3,8 +3,8 @@ import starlight from '@astrojs/starlight';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 import starlightLlmsTxt from 'starlight-llms-txt';
 
-const site = 'https://rootstrap.github.io';
-const base = 'react-native-template';
+const site = 'https://tulparyazilim.github.io';
+const base = 'expo-starter-template';
 
 // https://astro.build/config
 export default defineConfig({
@@ -12,22 +12,22 @@ export default defineConfig({
   base,
   integrations: [
     starlight({
-      title: 'Rootstrap React Native Template',
+      title: 'Expo Starter Template',
       plugins: [starlightLlmsTxt()],
       description: `Your All-in-One Solution for Building Outstanding React Native/Expo Apps. From editor setup to store submission, we've got you covered!`,
       expressiveCode: {
         themes: ['dracula', 'solarized-light'],
       },
       logo: {
-        light: '/src/assets/rootstrap-black.svg',
-        dark: '/src/assets/rootstrap-white.svg',
+        light: '/src/assets/tulpar-logo-dark.png',
+        dark: '/src/assets/tulpar-logo-white.png',
         replacesTitle: true,
       },
       components: {
         LastUpdated: './src/components/LastUpdated.astro',
       },
       social: {
-        github: 'https://github.com/rootstrap/react-native-template',
+        github: 'https://github.com/Tulpar-Yazilim/expo-starter-template',
       },
       head: [
         {

@@ -1,11 +1,11 @@
 {
-  "name": "create-rootstrap-rn-app",
-  "version": "1.3.2",
-  "description": "Rootstrap expo starter cli",
-  "homepage": "https://github.com/rootstrap/react-native-template",
+  "name": "create-tp-expo-starter",
+  "version": "1.0.0",
+  "description": "expo starter cli",
+  "homepage": "https://github.com/Tulpar-Yazilim/expo-starter-template",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rootstrap/react-native-template.git"
+    "url": "git+https://github.com/Tulpar-Yazilim/expo-starter-template.git"
   },
   "main": "index.js",
   "scripts": {
@@ -14,7 +14,7 @@
     "postpack": "cross-env rm README.md"
   },
   "bin": {
-    "create-rootstrap-rn-app": "index.js"
+    "create-tp-expo-starter": "index.js"
   },
   "files": [
     "index.js",
@@ -36,6 +36,7 @@
     "react-native-boilerplate",
     "expo-boilerplate",
     "cli",
+    "tulparyazilim",
     "obytes",
     "rootstrap"
   ],

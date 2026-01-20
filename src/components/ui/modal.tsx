@@ -122,8 +122,8 @@ const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
 
 const CustomBackdrop = ({ style }: BottomSheetBackdropProps) => {
   const { close } = useBottomSheet();
-  const FADE_IN_DURATION = 50;
-  const FADE_OUT_DURATION = 20;
+  const FADE_IN_DURATION = 0;
+  const FADE_OUT_DURATION = 0;
   return (
     <AnimatedPressable
       onPress={() => close()}

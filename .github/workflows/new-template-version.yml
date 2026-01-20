@@ -1,6 +1,6 @@
 # 🔗 Links:
-# Source file: https://github.com/rootstrap/react-native-template/blob/master/.github/workflows/lint-ts.yml
-# Starter releasing process: https://rootstrap.github.io/react-native-template/ci-cd/app-releasing-process/
+# Source file: https://github.com/Tulpar-Yazilim/expo-starter-template/blob/master/.github/workflows/lint-ts.yml
+# Starter releasing process: https://tulparyazilim.github.io/expo-starter-template/ci-cd/app-releasing-process/
 
 # ✍️ Description:
 # This workflow is used to create a new version of the template and push a new tag to the repo.
@@ -49,7 +49,7 @@ jobs:
     runs-on: ubuntu-latest
     environment:
       name: template
-      url: https://github.com/rootstrap/react-native-template/releases/tag/v${{ env.NEW_VERSION }}
+      url: https://github.com/Tulpar-Yazilim/expo-starter-template/releases/tag/v${{ env.NEW_VERSION }}
     permissions:
       contents: write
     steps:
@@ -70,12 +70,12 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
 
-      - name: 📦 Setup Node + PNPM + install deps
-        uses: ./.github/actions/setup-node-pnpm-install
+      - name: 📦 Setup Node + YARN + install deps
+        uses: ./.github/actions/setup-node-yarn-install
 
       - name: 🏃‍♂️ Run Template release
         run: |
-          pnpm app-release ${{ github.event.inputs.release-type }}
+          yarn app-release ${{ github.event.inputs.release-type }}
 
       - name: 📝 Get new package version
         run: |

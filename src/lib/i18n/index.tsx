@@ -1,25 +1,43 @@
-import { getLocales } from 'expo-localization';
-import i18n, { dir, use } from 'i18next';
+import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
+import i18n, { dir } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { I18nManager } from 'react-native';
 
+import { useAppStore } from '../stores';
 import { resources } from './resources';
+
+export * from './resources';
+export * from './types';
 export * from './utils';
 
-const locales = getLocales();
+export const DEFAULT_LANGUAGE = 'en';
 
-// eslint-disable-next-line react-hooks/rules-of-hooks
-use(initReactI18next).init({
-  resources,
-  lng: locales[0]?.languageTag, // TODO: if you are not supporting multiple languages or languages with multiple directions you can set the default value to `en`
-  fallbackLng: 'en',
-  compatibilityJSON: 'v3', // By default React Native projects does not support Intl
+dayjs.extend(relativeTime);
 
-  // allows integrating dynamic values into translations.
-  interpolation: {
-    escapeValue: false, // escape passed in values to avoid XSS injections
-  },
-});
+export const initDayjs = () => {
+  const currentLanguage = useAppStore.getState()?.language ?? DEFAULT_LANGUAGE;
+  dayjs.locale(currentLanguage);
+};
+
+const initI18n = async () => {
+  const currentLanguage = useAppStore.getState()?.language ?? DEFAULT_LANGUAGE;
+
+  i18n.use(initReactI18next).init({
+    resources,
+    lng: currentLanguage,
+    fallbackLng: DEFAULT_LANGUAGE,
+    compatibilityJSON: 'v3',
+    interpolation: {
+      escapeValue: false,
+    },
+    pluralSeparator: '_',
+  });
+
+  initDayjs();
+};
+
+initI18n();
 
 // Is it a RTL language?
 export const isRTL: boolean = dir() === 'rtl';

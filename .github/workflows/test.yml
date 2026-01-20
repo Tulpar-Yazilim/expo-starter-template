@@ -1,5 +1,5 @@
 # 🔗 Links:
-# Source file: https://github.com/rootstrap/react-native-template/blob/master/.github/workflows/test.yml
+# Source file: https://github.com/Tulpar-Yazilim/expo-starter-template/blob/master/.github/workflows/test.yml
 
 # ✍️ Description:
 # This action is used to run unit tests
@@ -32,11 +32,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: 📦 Setup Node + PNPM + install deps
-        uses: ./.github/actions/setup-node-pnpm-install
+      - name: 📦 Setup Node + YARN + install deps
+        uses: ./.github/actions/setup-node-yarn-install
 
       - name: 🏃‍♂️ Run Tests
-        run: pnpm run test:ci
+        run: yarn run test:ci
 
       - name: Jest Coverage Comment
         uses: MishaKav/jest-coverage-comment@main

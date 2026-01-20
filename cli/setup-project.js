@@ -18,10 +18,10 @@ const initializeProjectRepository = async (projectName) => {
 };
 
 const installDependencies = async (projectName) => {
-  await runCommand(`cd ${projectName} && pnpm install`, {
+  await runCommand(`cd ${projectName} && yarn install`, {
     loading: 'Installing project dependencies',
     success: 'Dependencies installed',
-    error: 'Failed to install dependencies, Make sure you have pnpm installed',
+    error: 'Failed to install dependencies, Make sure you have yarn installed',
   });
 };
 
@@ -65,11 +65,11 @@ const updateProjectConfig = async (projectName) => {
       fileName: 'env.js',
       replacements: [
         {
-          searchValue: /RootstrapApp/gi,
+          searchValue: /ExpoApp/gi,
           replaceValue: projectName,
         },
         {
-          searchValue: /com.rootstrap/gi,
+          searchValue: /com.expoapp/gi,
           replaceValue: `com.${projectName.toLowerCase()}`,
         },
         {

@@ -7,8 +7,8 @@ const { setupProject, installDependencies } = require('./setup-project.js');
 const pkg = require('./package.json');
 
 const { name: packageName } = pkg;
-const createRootstrapApp = async () => {
-  consola.box("Rootstrap's React Native Template\nPerfect React Native App Kickstart 🚀!");
+const createApp = async () => {
+  consola.box("Expo Starter Template\nPerfect React Native App Kickstart 🚀!");
   // get project name from command line
   const projectName = process.argv[2];
   // check if project name is provided
@@ -24,11 +24,11 @@ const createRootstrapApp = async () => {
   // setup the project
   await setupProject(projectName);
 
-  // install project dependencies using pnpm
+  // install project dependencies using yarn
   await installDependencies(projectName);
 
   // show instructions to run the project + link to the documentation
   showMoreDetails(projectName);
 };
 
-createRootstrapApp();
+createApp();

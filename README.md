@@ -1,12 +1,12 @@
 <p align="center">
-    <img alt="Rootstrap's React Native Template" src="https://github.com/user-attachments/assets/2015cb3f-64ab-4ccd-b85f-ca77f73686eb" width="200" />
+    <img alt="Expo Starter Template" src="https://tulparyazilim.com.tr/theme/images/tulpar-logo-dark.png" width="200" />
 </p>
 
 <h1 align="center">
-  Rootstrap's React Native Template
+  Expo Starter Template
 </h1>
 
-![expo](https://img.shields.io/github/package-json/dependency-version/rootstrap/react-native-template/expo?label=expo) ![react-native](https://img.shields.io/github/package-json/dependency-version/rootstrap/react-native-template/react-native?label=react-native) ![GitHub Repo stars](https://img.shields.io/github/stars/rootstrap/react-native-template) ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/rootstrap/react-native-template) ![GitHub issues](https://img.shields.io/github/issues/rootstrap/react-native-template) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/rootstrap/react-native-template)
+![expo](https://img.shields.io/github/package-json/dependency-version/Tulpar-Yazilim/expo-starter-template/expo?label=expo) ![react-native](https://img.shields.io/github/package-json/dependency-version/Tulpar-Yazilim/expo-starter-template/react-native?label=react-native) ![GitHub Repo stars](https://img.shields.io/github/stars/Tulpar-Yazilim/expo-starter-template) ![GitHub commit activity (branch)](https://img.shields.io/github/commit-activity/m/Tulpar-Yazilim/expo-starter-template) ![GitHub issues](https://img.shields.io/github/issues/Tulpar-Yazilim/expo-starter-template) ![GitHub closed issues](https://img.shields.io/github/issues-closed-raw/Tulpar-Yazilim/expo-starter-template)
 
 📱 A template for your next React Native project 🚀, Made with developer experience and performance first: Expo, TypeScript, NativeWind, Husky, Lint-Staged, expo-router, react-query, react-hook-form, I18n and preconfigured for EAS.
 
@@ -14,7 +14,7 @@ This repository is a fork of [Obytes Starter](https://github.com/obytes/react-na
 
 # Overview
 
-As a team of experienced developers at Rootstrap, we have spent years building high-quality React Native applications. Our initial starter kit was designed for React Native CLI apps. However, with the strong recommendation to work with Expo since React Native 0.75, we recognized the need to adapt quickly and leverage the best tools available.
+As a team of experienced developers at Tulpar, we have spent years building high-quality React Native applications. Our initial starter kit was designed for React Native CLI apps. However, with the strong recommendation to work with Expo since React Native 0.75, we recognized the need to adapt quickly and leverage the best tools available.
 
 To maintain our commitment to delivering top-quality products efficiently, we chose to explore and research existing templates maintained by a larger community.
 
@@ -41,15 +41,15 @@ This template brings several key advantages. It provides our team with a consist
 
 ## ✍️ Documentation 🚧 UNDER CONSTRUCTION 🚧
 
-- [Create new project ](https://rootstrap.github.io/react-native-template/getting-started/create-new-app/)
-- [Rules and Conventions](https://rootstrap.github.io/react-native-template/getting-started/rules-and-conventions/)
-- [Project structure](https://rootstrap.github.io/react-native-template/getting-started/project-structure/)
-- [Environment vars and config](https://rootstrap.github.io/react-native-template/getting-started/environment-vars-config/)
-- [UI and Theming](https://rootstrap.github.io/react-native-template/ui-and-theme/ui-theming/)
-- [Components](https://rootstrap.github.io/react-native-template/ui-and-theme/components/)
-- [Forms](https://rootstrap.github.io/react-native-template/ui-and-theme/forms/)
-- [Data fetching](https://rootstrap.github.io/react-native-template/guides/data-fetching/)
-- [Contribute to starter](https://rootstrap.github.io/react-native-template/how-to-contribute/)
+- [Create new project ](https://tulparyazilim.github.io/expo-starter-template/getting-started/create-new-app/)
+- [Rules and Conventions](https://tulparyazilim.github.io/expo-starter-template/getting-started/rules-and-conventions/)
+- [Project structure](https://tulparyazilim.github.io/expo-starter-template/getting-started/project-structure/)
+- [Environment vars and config](https://tulparyazilim.github.io/expo-starter-template/getting-started/environment-vars-config/)
+- [UI and Theming](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/ui-theming/)
+- [Components](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/components/)
+- [Forms](https://tulparyazilim.github.io/expo-starter-template/ui-and-theme/forms/)
+- [Data fetching](https://tulparyazilim.github.io/expo-starter-template/guides/data-fetching/)
+- [Contribute to starter](https://tulparyazilim.github.io/expo-starter-template/how-to-contribute/)
 
 ## 🧑‍💻 Stay up to date
 
@@ -59,20 +59,9 @@ If you want to stay up to date with the latest developments in our starter kit, 
 
 We value the feedback and contributions of our users, and we encourage you to let us know if you have any suggestions for improving our starter kit. We are always looking for ways to make it even more effective and useful for our community. So, please do not hesitate to reach out and share your thoughts with us.
 
-## Add RS GPT Review Bot
-
-You can add a GPT Review Bot to your app by following these steps:
-
-- You need to have an OpenAI API key.
-- Save your OpenAI API key as a Secret in your repository.
-- Create a new workflow in folder .github/workflows that will be triggered on issues, pull requests, and comments.
-- You can see examples of workflows in the [rs-gpt-review](https://github.com/rootstrap/rs-gpt-review) repository.
-
 #### Notes:
 
 The bot will be triggered on issues, pull requests and comments, you can modify your PULL_REQUEST_TEMPLATE.md to tag the review bot and trigger the workflow every time a pull request is created.
-
-Check this [file](https://github.com/rootstrap/rs-gpt-review/blob/main/.github/workflows/main.yml) for more examples.
 
 <!-- add a gif image here  -->
 
@@ -102,7 +91,7 @@ Check this [file](https://github.com/rootstrap/rs-gpt-review/blob/main/.github/w
 
 ## Contributors
 
-This starter is maintained by Rootstrap React Native team and we welcome new contributors to join us in improving it. If you are interested in getting involved in the project, please don't hesitate to open an issue or submit a pull request.
+This starter is maintained by Expo Starter Template team and we welcome new contributors to join us in improving it. If you are interested in getting involved in the project, please don't hesitate to open an issue or submit a pull request.
 
 ## 🔖 License
 

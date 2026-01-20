@@ -19,9 +19,9 @@ const getLatestRelease = async () => {
 const cloneLatestTemplateRelease = async (projectName) => {
   consola.start('Extracting last release number 👀');
   const latest_release = await getLatestRelease();
-  consola.info(`Using Rootstrap's Template ${latest_release}`);
+  consola.info(`Using Expo Starter Template ${latest_release}`);
 
-  // create a new project based on Rootstrap template
+  // create a new project based on expo starter template
   const cloneStarter = `git clone -b ${latest_release} --depth=1 https://github.com/${TEMPLATE_REPOSITORY}.git ${projectName}`;
   await runCommand(cloneStarter, {
     loading: 'Extracting the template...',

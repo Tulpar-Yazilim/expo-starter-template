@@ -40,7 +40,7 @@ Still hesitating? Check out this [article](https://reactnative.dev/blog/2024/06/
 
 ### Who is behind the starter kit?
 
-This starter kit is maintained by the [Obytes mobile tribe team](https://www.obytes.com/team) since 2021. At Rootstrap we've started using it during 2024. We actively use it for our projects and make slight modifications to better adjust to our workflow, experience and projects. The template is open-source, released under the MIT license, ensuring flexibility for users. Our commitment to this template is ongoing; we will continue to sync it with the Obytes starter kit, maintain it and improve it as long as it remains a core part of our internal development process.
+This starter kit is maintained by the [Obytes mobile tribe team](https://www.obytes.com/team) since 2021. At Tulpar we've started using it during 2026. We actively use it for our projects and make slight modifications to better adjust to our workflow, experience and projects. The template is open-source, released under the MIT license, ensuring flexibility for users. Our commitment to this template is ongoing; we will continue to sync it with the Obytes starter kit, maintain it and improve it as long as it remains a core part of our internal development process.
 
 ### Can you include X feature or library?
 

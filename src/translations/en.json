@@ -17,7 +17,8 @@
         "emailRequired": "Email is required",
         "invalidEmail": "Invalid email format",
         "passwordMinChars": "Password must be at least 6 characters",
-        "passwordRequired": "Password is required"
+        "passwordRequired": "Password is required",
+        "usernameRequired": "Username is required"
       }
     },
     "signUp": {
@@ -118,7 +119,7 @@
     "successMessage": "Your password has been successfully updated.",
     "title": "Update Password"
   },
-  "welcome": "Welcome to rootstrap app site",
+  "welcome": "Welcome to app site",
   "www": {
     "invalidUrl": "Invalid Url"
   }
