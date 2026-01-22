@@ -1,9 +1,8 @@
 const {
   execShellCommand,
   runCommand,
-  UPSTREAM_REPOSITORY,
-  TEMPLATE_REPOSITORY,
 } = require('./utils.js');
+const path = require('path');
 const { consola } = require('consola');
 const fs = require('fs-extra');
 const ProjectFilesManager = require('./project-files-manager.js');
@@ -18,10 +17,21 @@ const initializeProjectRepository = async (projectName) => {
 };
 
 const installDependencies = async (projectName) => {
-  await runCommand(`cd ${projectName} && yarn install`, {
+  const projectRoot = path.resolve(process.cwd(), projectName);
+  const packageJsonPath = path.join(projectRoot, 'package.json');
+
+  const packageJson = fs.readJsonSync(packageJsonPath);
+  const hasPackageManager = !!packageJson.packageManager;
+
+  const installCommand = hasPackageManager
+    ? `cd ${projectName} && corepack enable && corepack install`
+    : `cd ${projectName} && yarn install`;
+
+  await runCommand(installCommand, {
     loading: 'Installing project dependencies',
     success: 'Dependencies installed',
-    error: 'Failed to install dependencies, Make sure you have yarn installed',
+    error:
+      'Failed to install dependencies. Make sure Corepack is enabled (corepack enable)',
   });
 };
 
@@ -30,9 +40,7 @@ const removeUnrelatedFiles = () => {
     '.git',
     'README.md',
     'docs',
-    '.github/workflows/deploy-docs.yml',
     'cli',
-    '.github/workflows/deploy-cli.yml',
     'LICENSE',
   ]);
 };
@@ -90,65 +98,6 @@ const updateProjectConfig = async (projectName) => {
   ]);
 };
 
-const updateGitHubWorkflows = (projectName) => {
-  // Update useful workflows
-  projectFilesManager.replaceFilesContent([
-    {
-      fileName: '.github/workflows/new-template-version.yml',
-      replacements: [
-        {
-          searchValue: 'new version of the template',
-          replaceValue: 'new version of the app',
-        },
-        {
-          searchValue: 'New Template Version',
-          replaceValue: `New ${projectName} Version`,
-        },
-        {
-          searchValue: 'Run Template release',
-          replaceValue: 'Run App release',
-        },
-        {
-          searchValue:
-            /^\s*environment:\s*\n\s*name:\s*template\s*\n\s*url:\s*.+\s*\n/m,
-          replaceValue: '',
-        },
-      ],
-    },
-  ]);
-
-  projectFilesManager.renameFiles([
-    {
-      oldFileName: '.github/workflows/new-template-version.yml',
-      newFileName: '.github/workflows/new-app-version.yml',
-    },
-  ]);
-
-  // Update Pull Request Template
-  projectFilesManager.replaceFilesContent([
-    {
-      fileName: '.github/PULL_REQUEST_TEMPLATE.md',
-      replacements: [
-        {
-          searchValue: /^[\s\S]*?(?=#### Jira board reference:)/,
-          replaceValue: '',
-        },
-      ],
-    },
-  ]);
-
-  // Remove upstream sync workflow, intended to be used only in the template repository
-  projectFilesManager.removeFiles(['.github/workflows/sync-with-upstream.yml']);
-
-  // Enable sync with template workflow
-  projectFilesManager.renameFiles([
-    {
-      oldFileName: '.github/project-workflows/sync-with-template.yml',
-      newFileName: '.github/workflows/sync-with-template.yml',
-    },
-  ]);
-};
-
 const updateProjectReadme = (projectName) => {
   projectFilesManager.renameFiles([
     {
@@ -173,14 +122,14 @@ const updateProjectReadme = (projectName) => {
 const setupProject = async (projectName) => {
   consola.start(`Clean up and setup your project 🧹`);
 
-  projectFilesManager = ProjectFilesManager.withProjectName(projectName);
+  const projectRoot = path.resolve(process.cwd(), projectName);
+  projectFilesManager = ProjectFilesManager.withProjectRoot(projectRoot);
 
   try {
     removeUnrelatedFiles();
     await initializeProjectRepository(projectName);
     updatePackageJson(projectName);
     updateProjectConfig(projectName);
-    updateGitHubWorkflows(projectName);
     updateProjectReadme(projectName);
     consola.success(`Clean up and setup your project 🧹`);
   } catch (error) {

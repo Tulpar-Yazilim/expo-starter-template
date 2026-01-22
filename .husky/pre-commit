@@ -1,6 +1,5 @@
 . "$(dirname "$0")/common.sh"
 
-
 echo "===\n>> Checking branch name..."
 
 # Check if branch protection is enabled
@@ -19,5 +18,5 @@ fi
 echo ">> Finish checking branch name"
 echo ">> Linting your files and fixing them if needed..."
 
-yarn type-check
-yarn lint-staged
+npx type-check
+npx lint
