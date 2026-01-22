@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 import relativeTime from 'dayjs/plugin/relativeTime';
-import i18n, { dir } from 'i18next';
+import i18n, { dir, use as i18nUse } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { I18nManager } from 'react-native';
 
@@ -23,7 +23,7 @@ export const initDayjs = () => {
 const initI18n = async () => {
   const currentLanguage = useAppStore.getState()?.language ?? DEFAULT_LANGUAGE;
 
-  i18n.use(initReactI18next).init({
+  i18nUse(initReactI18next).init({
     resources,
     lng: currentLanguage,
     fallbackLng: DEFAULT_LANGUAGE,

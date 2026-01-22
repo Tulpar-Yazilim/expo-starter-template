@@ -2,7 +2,7 @@
 const { exec } = require('child_process');
 const { consola } = require('consola');
 
-const UPSTREAM_REPOSITORY = "obytes/react-native-template-obytes";
+const UPSTREAM_REPOSITORY = 'Tulpar-Yazilim/expo-starter-template';
 const TEMPLATE_REPOSITORY = "Tulpar-Yazilim/expo-starter-template";
 
 const execShellCommand = (cmd) => {

@@ -1,100 +1,95 @@
 const fs = require('fs-extra');
 const path = require('path');
+const { consola } = require('consola');
 
 class ProjectFilesManager {
-  #projectName;
+  #projectRoot;
 
-  constructor(
-    /**
-     * @type {string}
-     */
-    projectName
-  ) {
-    this.#projectName = projectName;
+  /**
+   * @param {string} projectRoot - Absolute path of the project root
+   */
+  constructor(projectRoot) {
+    this.#projectRoot = projectRoot;
   }
 
-  static withProjectName(
-    /**
-     * @type {string}
-     */
-    projectName
-  ) {
-    return new this(projectName);
+  /**
+   * Factory method
+   * @param {string} projectRoot
+   */
+  static withProjectRoot(projectRoot) {
+    return new this(projectRoot);
   }
 
-  getAbsoluteFilePath(
-    /**
-     * A file path relative to project's root path
-     * @type {string}
-     */
-    relativeFilePath
-  ) {
-    return path.join(process.cwd(), `${this.#projectName}/${relativeFilePath}`);
+  /**
+   * Resolve absolute path from project root
+   * @param {string} relativeFilePath
+   */
+  getAbsoluteFilePath(relativeFilePath) {
+    return path.join(this.#projectRoot, relativeFilePath);
   }
 
-  removeFiles(
-    /**
-     * An array of file paths relative to project's root path
-     * @type {Array<string>}
-     */
-    files
-  ) {
-    files.forEach((fileName) => {
-      const absoluteFilePath = this.getAbsoluteFilePath(fileName);
+  /**
+   * Remove files or folders safely
+   * @param {Array<string>} files
+   */
+  removeFiles(files) {
+    files.forEach((relativePath) => {
+      const absolutePath = this.getAbsoluteFilePath(relativePath);
 
-      fs.removeSync(absoluteFilePath);
+      if (!fs.existsSync(absolutePath)) {
+        consola.warn(`Skipped missing file/folder: ${relativePath}`);
+        return;
+      }
+
+      fs.removeSync(absolutePath);
     });
   }
 
-  renameFiles(
-    /**
-     * An array of objects containing the old and the new file names
-     * relative to project's root path
-     *
-     * @type {Array<{
-     *   oldFileName: string;
-     *   newFileName: string;
-     *  }>}
-     */
-    files
-  ) {
+  /**
+   * Rename files safely
+   * @param {Array<{ oldFileName: string; newFileName: string }>} files
+   */
+  renameFiles(files) {
     files.forEach(({ oldFileName, newFileName }) => {
-      const oldAbsoluteFilePath = this.getAbsoluteFilePath(oldFileName);
-      const newAbsoluteFilePath = this.getAbsoluteFilePath(newFileName);
+      const oldPath = this.getAbsoluteFilePath(oldFileName);
+      const newPath = this.getAbsoluteFilePath(newFileName);
 
-      fs.renameSync(oldAbsoluteFilePath, newAbsoluteFilePath);
+      if (!fs.existsSync(oldPath)) {
+        consola.warn(`Skipped rename, file not found: ${oldFileName}`);
+        return;
+      }
+
+      fs.ensureDirSync(path.dirname(newPath));
+      fs.renameSync(oldPath, newPath);
     });
   }
 
-  replaceFilesContent(
-    /**
-     * An array of objects containing the file name relative to project's
-     * root path and the replacement patterns to be applied
-     *
-     * @type {Array<{
-     *  fileName: string;
-     *  replacements: Array<{
-     *    searchValue: string;
-     *    replaceValue: string;
-     *  }>
-     * }>}
-     */
-    files
-  ) {
+  /**
+   * Replace contents of files safely
+   * @param {Array<{
+   *  fileName: string;
+   *  replacements: Array<{
+   *    searchValue: string | RegExp;
+   *    replaceValue: string;
+   *  }>
+   * }>} files
+   */
+  replaceFilesContent(files) {
     files.forEach(({ fileName, replacements }) => {
-      const absoluteFilePath = this.getAbsoluteFilePath(fileName);
+      const absolutePath = this.getAbsoluteFilePath(fileName);
 
-      const contents = fs.readFileSync(absoluteFilePath, {
-        encoding: 'utf-8',
-      });
+      if (!fs.existsSync(absolutePath)) {
+        consola.warn(`Skipped content update, file not found: ${fileName}`);
+        return;
+      }
 
-      let replaced = contents;
+      let content = fs.readFileSync(absolutePath, 'utf-8');
 
       replacements.forEach(({ searchValue, replaceValue }) => {
-        replaced = replaced.replace(searchValue, replaceValue);
+        content = content.replace(searchValue, replaceValue);
       });
 
-      fs.writeFileSync(absoluteFilePath, replaced, { spaces: 2 });
+      fs.writeFileSync(absolutePath, content);
     });
   }
 }

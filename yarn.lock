@@ -956,12 +956,12 @@
     "@types/conventional-commits-parser" "^5.0.0"
     chalk "^5.3.0"
 
-"@dev-plugins/react-query@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@dev-plugins/react-query/-/react-query-0.0.7.tgz#143ad52782a60de8e2acd9f2103f4112de7e96f4"
-  integrity sha512-A54YRUEwSHjEl4OrnP9QDwbgx4XOzCIreqYfCzPB0E4EV5U7ykCdxsm6gNhfy5EQfNvkqzrSRhO8GsR8fCfxdw==
+"@dev-plugins/react-query@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@dev-plugins/react-query/-/react-query-0.4.0.tgz#ac64fe1cbdac9bc8fd5efb0f69fa467c74e99557"
+  integrity sha512-/8M2a7DlVTjcdhb4D/E+aHUCOqSS6s53y3fFrOoCyLPxhhhkMujS91pARH6XbF/GRr6p6RBNBJQpWasI6uj7GA==
   dependencies:
-    flatted "^3.2.9"
+    flatted "^3.3.1"
 
 "@egjs/hammerjs@^2.0.17":
   version "2.0.17"
@@ -5908,7 +5908,7 @@ flat-cache@^4.0.0:
     flatted "^3.2.9"
     keyv "^4.5.4"
 
-flatted@^3.2.9:
+flatted@^3.2.9, flatted@^3.3.1:
   version "3.3.3"
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.3.3.tgz#67c8fad95454a7c7abebf74bb78ee74a44023358"
   integrity sha512-GX+ysw4PBCz0PzosHDepZGANEuFCMLrnRTiEy9McGjmkCQYwRq4A/X786G/fjM/+OjsWSU1ZrY5qyARZmO/uwg==

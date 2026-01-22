@@ -6,29 +6,36 @@ const { cloneLatestTemplateRelease } = require('./clone-repo.js');
 const { setupProject, installDependencies } = require('./setup-project.js');
 const pkg = require('./package.json');
 
+const [major] = process.versions.node.split('.').map(Number);
+if (major < 18) {
+  consola.error('Node.js 18 or higher is required.');
+  process.exit(1);
+}
+
 const { name: packageName } = pkg;
+
 const createApp = async () => {
-  consola.box("Expo Starter Template\nPerfect React Native App Kickstart 🚀!");
-  // get project name from command line
+  consola.box('Expo Starter Template\nPerfect React Native App Kickstart 🚀!');
+
   const projectName = process.argv[2];
-  // check if project name is provided
+
   if (!projectName) {
     consola.error(
-      `Please provide a name for your project: \`npx ${packageName}@latest <project-name>\``
+      `Please provide a project name:\n\n` +
+        `npm create tp-expo-starter <project-name>\n` +
+        `or\n` +
+        `npx create-tp-expo-starter <project-name>`,
     );
     process.exit(1);
   }
-  // clone the latest release of the template from github
+
   await cloneLatestTemplateRelease(projectName);
-
-  // setup the project
   await setupProject(projectName);
-
-  // install project dependencies using yarn
   await installDependencies(projectName);
-
-  // show instructions to run the project + link to the documentation
   showMoreDetails(projectName);
 };
 
-createApp();
+createApp().catch((err) => {
+  consola.error(err.message || err);
+  process.exit(1);
+});

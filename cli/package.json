@@ -1,6 +1,6 @@
 {
   "name": "create-tp-expo-starter",
-  "version": "1.0.0",
+  "version": "1.0.4",
   "description": "expo starter cli",
   "homepage": "https://github.com/Tulpar-Yazilim/expo-starter-template",
   "repository": {
@@ -24,8 +24,8 @@
     "setup-project.js"
   ],
   "dependencies": {
-    "consola": "^3.2.3",
-    "fs-extra": "^10.1.0"
+    "consola": "^3.4.2",
+    "fs-extra": "^11.3.3"
   },
   "keywords": [
     "react-native",
@@ -37,6 +37,7 @@
     "expo-boilerplate",
     "cli",
     "tulparyazilim",
+    "tulparsoftware",
     "obytes",
     "rootstrap"
   ],
