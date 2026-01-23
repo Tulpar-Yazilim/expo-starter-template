@@ -19,7 +19,7 @@ import {
 } from '@/components/ui';
 import { Website } from '@/components/ui/icons';
 import { signOut, translate } from '@/lib';
-import { Env } from '@/lib/env';
+import { Env } from '@env';
 
 export default function Settings() {
   const { data: userData } = useUser();

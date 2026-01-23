@@ -48,6 +48,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     },
   },
   experiments: {
+    reactCompiler: true,
     typedRoutes: true,
   },
   android: {
@@ -65,6 +66,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     [
       'expo-build-properties',
       {
+        buildReactNativeFromSource: true,
+        useHermesV1: true,
         ios: {
           deploymentTarget: '16.0',
         },

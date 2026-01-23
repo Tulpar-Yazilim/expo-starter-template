@@ -38,7 +38,7 @@ on:
         default: ""
 
 env:
-  UPSTREAM_REPOSITORY: obytes/react-native-template-obytes
+  UPSTREAM_REPOSITORY: Tulpar-Yazilim/expo-starter-template
   DIFF_EXCLUDED_ROUTES:
     | # Files/directories we don't want from the upstream repository
     ios
@@ -49,7 +49,7 @@ env:
     .github/workflows/new-app-version.yml
     .github/workflows/new-github-release.yml
     docs/public/reviews
-    src/app/login.tsx
+    app/login.tsx
     src/components/card.tsx
 
 jobs:
@@ -131,6 +131,6 @@ jobs:
       - name: 🎉 Create PR with changes
         if: ${{ env.BRANCH_EXISTS == 'true' && env.PR_EXISTS == 'false' }}
         run: |
-          gh pr create --title "chore: update upstream to ${{ env.UPSTREAM_UPDATE_VERSION }}" --body "Integrating latest changes from [obytes/react-native-template-obytes@${{ env.UPSTREAM_UPDATE_VERSION }}](https://github.com/obytes/react-native-template-obytes/releases/tag/${{ env.UPSTREAM_UPDATE_VERSION }})" --head ${{ env.BRANCH_NAME }}
+          gh pr create --title "chore: update upstream to ${{ env.UPSTREAM_UPDATE_VERSION }}" --body "Integrating latest changes from [Tulpar-Yazilim/expo-starter-template@${{ env.UPSTREAM_UPDATE_VERSION }}](https://github.com/Tulpar-Yazilim/expo-starter-template/releases/tag/${{ env.UPSTREAM_UPDATE_VERSION }})" --head ${{ env.BRANCH_NAME }}
         env:
           GITHUB_TOKEN: ${{ secrets.UPDATE_FROM_UPSTREAM_PAT }}

@@ -1,5 +1,5 @@
 // Import  global CSS file
-import '../../global.css';
+import '../global.css';
 import '@/lib/i18n';
 
 import { Stack } from 'expo-router';
