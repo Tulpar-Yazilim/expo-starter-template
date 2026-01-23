@@ -1,18 +1,21 @@
+#!/bin/sh
 
-
-function changed {
-    git diff --name-only HEAD@{1} HEAD | grep "^$1" >/dev/null 2>&1
+changed() {
+  git diff --name-only HEAD@{1} HEAD | grep -q "^$1"
 }
 
-echo 'Checking for changes in yarn-lock.yml...'
+echo "🔍 Checking for changes in yarn.lock..."
 
-if changed 'yarn-lock.yml'; then
-    echo "📦 yarn-lock.yml changed. Run yarn install to bring your dependencies up to date."
-    yarn install
+if changed "yarn.lock"; then
+  echo "📦 yarn.lock has changed."
+  echo "👉 Please run 'yarn install' to sync your dependencies."
+else
+  echo "✅ Dependencies are up to date."
 fi
 
-echo 'You are up to date :)'
-
-echo 'If necessary, you can run yarn prebuild to generate native code.'
+echo
+echo "ℹ️ If necessary, you can run:"
+echo "   yarn prebuild"
+echo
 
 exit 0

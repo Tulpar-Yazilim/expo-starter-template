@@ -4,6 +4,9 @@ interface Props {
 }
 
 const { title } = Astro.props;
+
+import tulparLogo from "../assets/tulpar-logo-white.png";
+
 ---
 
 <article class="sl-flex not-content" aria-labelledby="about-obytes-heading">
@@ -79,7 +82,7 @@ const { title } = Astro.props;
     </svg>
   <small>and</small>
 
-  <img src="/src/assets/tulpar-logo-white.png"  height="65" />
+  <img src={tulparLogo.src} height="65" />
   <slot />
 </article>
 
