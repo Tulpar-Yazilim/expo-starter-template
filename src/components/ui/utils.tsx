@@ -1,8 +1,9 @@
 import type { AxiosError } from 'axios';
-import { Dimensions, Platform } from 'react-native';
+import { Dimensions } from 'react-native';
 import { showMessage } from 'react-native-flash-message';
 
-export const IS_IOS = Platform.OS === 'ios';
+export const IS_ANDROID = process.env.EXPO_OS === 'android';
+export const IS_IOS = process.env.EXPO_OS === 'ios';
 const { width, height } = Dimensions.get('screen');
 
 export const WIDTH = width;

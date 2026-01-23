@@ -1,6 +1,6 @@
 import { SplashScreen } from 'expo-router';
 
-import TabLayout from '@/app/(app)/_layout';
+import TabLayout from '../../app/(app)/_layout';
 import { useAuthProvider, useIsFirstTime } from '@/lib';
 import { render } from '@/lib/test-utils';
 
