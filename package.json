@@ -53,7 +53,7 @@
     "app-release": "cross-env SKIP_BRANCH_PROTECTION=true np --no-publish --no-cleanup --no-release-draft --message 'chore: release template v%s'",
     "version": "git add package.json",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
-    "type-check": "tsc  --noemit",
+    "type-check": "tsc --noemit",
     "lint:translations": "eslint ./src/translations/ --fix --ext .json  ",
     "test": "jest",
     "check-all": "yarn lint && yarn type-check && yarn lint:translations && yarn test",
