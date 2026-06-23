@@ -1,4 +1,3 @@
-/* eslint-disable max-lines-per-function */
 import type { ConfigContext, ExpoConfig } from '@expo/config';
 import type { AppIconBadgeConfig } from 'app-icon-badge/types';
 
@@ -20,7 +19,9 @@ const appIconBadgeConfig: AppIconBadgeConfig = {
   ],
 };
 
-export default ({ config }: ConfigContext): ExpoConfig => ({
+export default ({
+  config,
+}: ConfigContext): ExpoConfig & { newArchEnabled?: boolean } => ({
   ...config,
   name: Env.NAME,
   description: `${Env.NAME} Mobile App`,
@@ -46,6 +47,16 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     config: {
       usesNonExemptEncryption: false,
     },
+    infoPlist: {
+      LSApplicationQueriesSchemes: [
+        'https',
+        'http',
+        'blob',
+        'mailto',
+        'tel',
+        'whatsapp',
+      ],
+    },
   },
   experiments: {
     reactCompiler: true,
@@ -69,7 +80,10 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
         buildReactNativeFromSource: true,
         useHermesV1: true,
         ios: {
-          deploymentTarget: '16.0',
+          deploymentTarget: '16.4',
+        },
+        android: {
+          usePrecompiledHeaders: true,
         },
       },
     ],
@@ -90,6 +104,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     'expo-dev-client',
     'expo-localization',
     'expo-router',
+    'expo-status-bar',
     ['app-icon-badge', appIconBadgeConfig],
     ['react-native-edge-to-edge'],
   ],

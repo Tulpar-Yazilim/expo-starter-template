@@ -5,13 +5,13 @@
  *
  * Props:
  * - All `BottomSheetModalProps` props.
- * - `title` (string | undefined): Optional title for the modal header.
+ * - `title` (TxKeyPath | undefined): Optional title for the modal header.
  *
  * Usage Example:
  * import { Modal, useModal } from '@gorhom/bottom-sheet';
  *
  * function DisplayModal() {
- *   const { ref, present, dismiss } = useModal();
+ *   const { ref, present, dismiss, isOpen } = useModal();
  *
  *   return (
  *     <View>
@@ -28,13 +28,15 @@
  *
  */
 
-import type {
-  BottomSheetBackdropProps,
-  BottomSheetModalProps,
-} from '@gorhom/bottom-sheet';
-import { BottomSheetModal, useBottomSheet } from '@gorhom/bottom-sheet';
-import type { ForwardedRef } from 'react';
 import {
+  BottomSheetBackdrop,
+  type BottomSheetBackdropProps,
+  type BottomSheetModalProps,
+} from '@gorhom/bottom-sheet';
+import { BottomSheetModal } from '@gorhom/bottom-sheet';
+import { useColorScheme } from 'nativewind';
+import type { ForwardedRef } from 'react';
+import React, {
   forwardRef,
   memo,
   useCallback,
@@ -43,19 +45,23 @@ import {
   useRef,
 } from 'react';
 import { Pressable, View } from 'react-native';
-import Animated, { FadeIn, FadeOut } from 'react-native-reanimated';
+import { Easing } from 'react-native-reanimated';
 import { Path, Svg } from 'react-native-svg';
+
+import { translate, type TxKeyPath } from '@/lib';
 
 import { Text } from './text';
 
-type ModalProps = BottomSheetModalProps & {
-  title?: string;
+type ModalProps = Omit<BottomSheetModalProps, 'children'> & {
+  title?: TxKeyPath;
+  children?: React.ReactNode;
 };
 
 type ModalRef = ForwardedRef<BottomSheetModal>;
 
 type ModalHeaderProps = {
-  title?: string;
+  title?: TxKeyPath;
+  titleClass?: string;
   dismiss: () => void;
 };
 
@@ -67,6 +73,7 @@ export const useModal = () => {
   const dismiss = useCallback(() => {
     ref.current?.dismiss();
   }, []);
+
   return { ref, present, dismiss };
 };
 
@@ -76,6 +83,7 @@ export const Modal = forwardRef(
       snapPoints: _snapPoints = ['60%'],
       title,
       detached = false,
+      children,
       ...props
     }: ModalProps,
     ref: ModalRef,
@@ -83,6 +91,19 @@ export const Modal = forwardRef(
     const detachedProps = useMemo(() => getDetachedProps(detached), [detached]);
     const modal = useModal();
     const snapPoints = useMemo(() => _snapPoints, [_snapPoints]);
+    const { colorScheme } = useColorScheme();
+    const isDark = colorScheme === 'dark';
+    const backgroundStyle = useMemo(
+      () => ({ backgroundColor: isDark ? '#171717' : '#ffffff' }),
+      [isDark],
+    );
+    const animationConfigs = useMemo(
+      () => ({
+        duration: 320,
+        easing: Easing.ease,
+      }),
+      [],
+    );
 
     useImperativeHandle(
       ref,
@@ -91,16 +112,14 @@ export const Modal = forwardRef(
 
     const renderHandleComponent = useCallback(
       () => (
-        <>
-          <View className="mb-8 mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700" />
-          <ModalHeader title={title} dismiss={modal.dismiss} />
-        </>
+        <View className="mt-2 h-1 w-12 self-center rounded-lg bg-gray-400 dark:bg-gray-700" />
       ),
-      [title, modal.dismiss],
+      [],
     );
 
     return (
       <BottomSheetModal
+        stackBehavior="push"
         {...props}
         {...detachedProps}
         ref={modal.ref}
@@ -109,33 +128,24 @@ export const Modal = forwardRef(
         backdropComponent={props.backdropComponent ?? renderBackdrop}
         enableDynamicSizing={false}
         handleComponent={renderHandleComponent}
-      />
+        backgroundStyle={backgroundStyle}
+        animationConfigs={animationConfigs}
+      >
+        <ModalHeader title={title} dismiss={modal.dismiss} />
+        {children}
+      </BottomSheetModal>
     );
   },
 );
 
-/**
- * Custom Backdrop
- */
-
-const AnimatedPressable = Animated.createAnimatedComponent(Pressable);
-
-const CustomBackdrop = ({ style }: BottomSheetBackdropProps) => {
-  const { close } = useBottomSheet();
-  const FADE_IN_DURATION = 0;
-  const FADE_OUT_DURATION = 0;
-  return (
-    <AnimatedPressable
-      onPress={() => close()}
-      entering={FadeIn.duration(FADE_IN_DURATION)}
-      exiting={FadeOut.duration(FADE_OUT_DURATION)}
-      style={[style, { backgroundColor: 'rgba(0, 0, 0, 0.4)' }]}
-    />
-  );
-};
-
 export const renderBackdrop = (props: BottomSheetBackdropProps) => (
-  <CustomBackdrop {...props} />
+  <BottomSheetBackdrop
+    {...props}
+    disappearsOnIndex={-1}
+    appearsOnIndex={0}
+    opacity={0.4}
+    pressBehavior="close"
+  />
 );
 
 /**
@@ -146,7 +156,6 @@ export const renderBackdrop = (props: BottomSheetBackdropProps) => (
  * @description
  * In case the modal is detached, we need to add some extra props to the modal to make it look like a detached modal.
  */
-
 const getDetachedProps = (detached: boolean) => {
   if (detached) {
     return {
@@ -161,36 +170,33 @@ const getDetachedProps = (detached: boolean) => {
 /**
  * ModalHeader
  */
-
-const ModalHeader = memo(({ title, dismiss }: ModalHeaderProps) => (
-  <>
-    {title && (
-      <View className="flex-row px-2 py-4">
-        <View className="size-[24px]" />
-        <View className="flex-1">
-          <Text className="text-center text-[16px] font-bold text-[#26313D] dark:text-white">
-            {title}
-          </Text>
-        </View>
-      </View>
-    )}
+const ModalHeader = memo(({ title, titleClass, dismiss }: ModalHeaderProps) => (
+  <View className="flex-row items-center px-4 pb-4 pt-2">
+    {/* left spacer balances the close button so title stays centered */}
+    <View className="w-6" />
+    <Text
+      className={`flex-1 text-center text-[18px] font-bold text-[#26313D] dark:text-white ${titleClass ?? ''}`}
+      numberOfLines={1}
+    >
+      {title ? translate(title) : ''}
+    </Text>
     <CloseButton close={dismiss} />
-  </>
+  </View>
 ));
 
 const CloseButton = ({ close }: { close: () => void }) => (
   <Pressable
     onPress={close}
-    className="absolute right-3 top-3 size-[24px] items-center justify-center "
+    className="size-6 items-center justify-center"
     hitSlop={{ top: 20, bottom: 20, left: 20, right: 20 }}
     accessibilityLabel="close modal"
     accessibilityRole="button"
     accessibilityHint="closes the modal"
   >
     <Svg
-      className="fill-neutral-300 dark:fill-white"
-      width={24}
-      height={24}
+      className="fill-neutral-400 dark:fill-white"
+      width={20}
+      height={20}
       fill="none"
       viewBox="0 0 24 24"
     >

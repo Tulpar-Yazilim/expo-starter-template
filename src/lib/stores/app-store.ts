@@ -1,3 +1,4 @@
+import i18n, { changeLanguage } from 'i18next';
 import { AppState, type AppStateStatus } from 'react-native';
 import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
@@ -26,6 +27,9 @@ export const useAppStore = create<AppStore>()(
         set({
           language,
         });
+        if (i18n.isInitialized) {
+          changeLanguage(language).then().catch(console.error);
+        }
       },
     }),
     {
@@ -34,8 +38,11 @@ export const useAppStore = create<AppStore>()(
       partialize: (state) => ({
         language: state.language,
       }),
-      onRehydrateStorage: () => () => {
+      onRehydrateStorage: () => (state) => {
         useAppStore.setState({ hydrated: true });
+        if (state?.language && i18n.isInitialized) {
+          changeLanguage(state.language).then().catch(console.error);
+        }
       },
     },
   ),

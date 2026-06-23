@@ -2,24 +2,28 @@ node_modules/
 .expo/
 dist/
 npm-debug.*
-*.jks
-*.p8
-*.p12
-*.key
 *.mobileprovision
 *.orig.*
 web-build/
 yarn-error.log
 /coverage
 
-.env.*
-!.env.sample
-
 /ios
 /android
 
 # macOS
 .DS_Store
+
+# Android signing
+keystore.properties
+
+# Fastlane
+Gemfile.lock
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+builds/
 
 # artifacts
 *.apks
@@ -35,3 +39,7 @@ expo-env.d.ts
 
 # cli
 cli/README.md
+
+.codegraph/**
+.claude/**
+.cursor/**

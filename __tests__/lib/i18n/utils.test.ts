@@ -2,8 +2,8 @@ import { use } from 'i18next';
 import { initReactI18next } from 'react-i18next';
 
 import en from '../../../src/translations/en.json';
-import type { TxKeyPath } from '../../../src/lib/i18n/utils';
-import { translate } from '../../../src/lib/i18n/utils';
+import type { TxKeyPath } from '@/lib/i18n/utils';
+import { translate } from '@/lib/i18n/utils';
 
 jest.mock('../../../src/lib/storage', () => ({
   storage: {

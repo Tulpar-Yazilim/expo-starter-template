@@ -9,6 +9,7 @@ import {
 import Svg, { Path } from 'react-native-svg';
 
 import colors from '@/components/ui/colors';
+import { translate } from '@/lib';
 
 import { Text } from './text';
 
@@ -35,6 +36,7 @@ export const Root = ({
   children,
   onChange,
   disabled,
+  accessibilityLabel,
   className = '',
   ...props
 }: RootProps) => {
@@ -49,6 +51,7 @@ export const Root = ({
         disabled ? 'opacity-50' : ''
       }`}
       accessibilityState={{ checked }}
+      accessibilityLabel={translate(accessibilityLabel)}
       disabled={disabled}
       {...props}
     >
@@ -65,7 +68,7 @@ type LabelProps = {
 
 const Label = ({ text, testID, className = '' }: LabelProps) => (
   <Text testID={testID} className={` ${className} pl-2`}>
-    {text}
+    {translate(text)}
   </Text>
 );
 

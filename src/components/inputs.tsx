@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import type { OptionType } from '@/components/ui';
+import type { OptionType, SelectValue } from '@/components/ui';
 import { Checkbox, Input, Radio, Select, Switch, View } from '@/components/ui';
 
 import { Title } from './title';
@@ -12,7 +12,7 @@ const options: Array<OptionType> = [
 ];
 
 export const Inputs = () => {
-  const [value, setValue] = useState<string | number | undefined>();
+  const [value, setValue] = useState<SelectValue | undefined>();
   return (
     <>
       <Title text="Form" />

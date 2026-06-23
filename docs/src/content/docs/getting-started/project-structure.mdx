@@ -15,7 +15,7 @@ If you open the new project in VSCode you will see the following structure:
 
 - api ## any thing related to api calls and data fetching
   - common/
-  - index.tsx
+  - index.ts
   - posts
   - types.ts
 - app ## app routes and layouts
@@ -32,14 +32,14 @@ If you open the new project in VSCode you will see the following structure:
     - focus-aware-status-bar.tsx
     - icons
     - image.tsx
-    - index.tsx
+    - index.ts
     - input.tsx
     - list.tsx
     - modal.tsx
     - progress-bar.tsx
     - select.tsx
     - text.tsx
-    - utils.tsx
+    - utils.ts
   - buttons.tsx
   - card.tsx
   - colors.tsx
@@ -55,10 +55,10 @@ If you open the new project in VSCode you will see the following structure:
   - env.js
   - hooks
   - i18n
-  - index.tsx
+  - index.ts
   - keyboard.ts
   - storage.tsx
-  - test-utils.tsx
+  - test-utils.ts
   - use-theme-config.tsx
   - utils.ts
 - translations ## translation resources files
@@ -94,7 +94,7 @@ We use absolute imports to import files using the Babel module resolver plugin a
 
 Here is a simple example of how the Feed screen looks with absolute imports.
 
-<Code file="app/(app)/index.tsx" meta="{4-7}" />
+<Code file="app/(app)/index.ts" meta="{4-7}" />
 
 This approach is very useful when you are working on a large project with a lot of files and folders and it can be done by updating the `babel.config.js` file and `tsconfig.json` file to the following:
 

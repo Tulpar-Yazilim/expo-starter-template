@@ -1,7 +1,8 @@
+import { useColorScheme } from 'nativewind';
 import React, { useCallback, useMemo } from 'react';
 
-import type { OptionType } from '@/components/ui';
-import { Options, useModal } from '@/components/ui';
+import { Icon, Options, type OptionType, useModal } from '@/components/ui';
+import colors from '@/components/ui/colors';
 import { translate, useAppStore } from '@/lib';
 import type { Language } from '@/lib/i18n/resources';
 
@@ -10,6 +11,10 @@ import { Item } from './item';
 export const LanguageItem = () => {
   const { language, changeLanguage } = useAppStore();
   const modal = useModal();
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+  const iconColor = isDark ? colors.neutral[400] : colors.neutral[500];
+
   const onSelect = useCallback(
     (option: OptionType) => {
       changeLanguage(option.value as Language);
@@ -34,6 +39,7 @@ export const LanguageItem = () => {
         text="settings.language"
         value={selectedLanguage?.label}
         onPress={modal.present}
+        icon={<Icon type="feather" name="globe" size={16} color={iconColor} />}
       />
       <Options
         ref={modal.ref}
