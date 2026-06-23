@@ -13,7 +13,8 @@
       },
       "android": {
         "buildType": "app-bundle",
-        "image": "latest"
+        "image": "latest",
+        "credentialsSource": "local"
       },
       "env": {
         "EXPO_NO_DOTENV": "1",
@@ -80,12 +81,12 @@
   "submit": {
     "production": {
       "ios": {
-        "ascAppId": "6746460022"
+        "ascAppId": "677622334455"
       }
     },
     "staging": {
       "ios": {
-        "ascAppId": "6745524568"
+        "ascAppId": "677622334455"
       },
       "android": {
         "releaseStatus": "draft"
@@ -93,7 +94,7 @@
     },
     "qa": {
       "ios": {
-        "ascAppId": "6745527331"
+        "ascAppId": "677622334455"
       },
       "android": {
         "releaseStatus": "draft"
@@ -101,7 +102,7 @@
     },
     "development": {
       "ios": {
-        "ascAppId": "6746459808"
+        "ascAppId": "677622334455"
       },
       "android": {
         "releaseStatus": "draft"

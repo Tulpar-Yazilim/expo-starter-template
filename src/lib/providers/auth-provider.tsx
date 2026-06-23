@@ -8,7 +8,7 @@ import React, {
   useState,
 } from 'react';
 
-import { signOut, useAuth } from '../stores';
+import { performSignOut, useAuth } from '../stores';
 
 interface AuthContextProps {
   isAuthenticated: boolean;
@@ -27,7 +27,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
   const checkToken = useCallback(() => {
     if (!token || !token.expireDate) {
-      signOut();
+      performSignOut();
       setLoading(false);
       setReady(true);
       return;
@@ -36,7 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     const isExpired = dayjs().isAfter(dayjs(token.expireDate));
 
     if (isExpired) {
-      signOut(); // Token expired, clear it
+      performSignOut(); // Token expired, clear it
     }
 
     setLoading(false);

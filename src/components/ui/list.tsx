@@ -1,27 +1,64 @@
-import { FlashList as NFlashList } from '@shopify/flash-list';
-import { memo } from 'react';
+import { FlashList, type FlashListProps } from '@shopify/flash-list';
+import { memo, type ReactElement, type RefAttributes } from 'react';
 import { ActivityIndicator, View } from 'react-native';
+import Animated from 'react-native-reanimated';
 import Svg, { Circle, Path } from 'react-native-svg';
 
+import { type TxKeyPath } from '../../lib/i18n';
 import { Text } from './text';
-type Props = {
+
+/* -------------------------------------------------------------------------- */
+/*                                    Types                                   */
+/* -------------------------------------------------------------------------- */
+
+type EmptyListProps = {
   isLoading: boolean;
+  message?: TxKeyPath;
 };
 
-export const List = NFlashList;
+/* -------------------------------------------------------------------------- */
+/*                                List Exports                                */
+/* -------------------------------------------------------------------------- */
 
-export const EmptyList = memo(({ isLoading }: Props) => (
+/**
+ * Base FlashList export
+ * Generic <T> desteği FlashList'ten gelir
+ */
+export const List = FlashList;
+
+/**
+ * Animated FlashList
+ * ❗ Generic <T> tanımda değil, kullanımda verilir
+ *
+ * Kullanım:
+ * <AnimatedList<TicketDto> ... />
+ */
+export const AnimatedList = Animated.createAnimatedComponent(FlashList) as <T>(
+  props: FlashListProps<T> & RefAttributes<typeof FlashList<T>>,
+) => ReactElement;
+
+/* -------------------------------------------------------------------------- */
+/*                              Empty List View                               */
+/* -------------------------------------------------------------------------- */
+
+export const EmptyList = memo(({ isLoading, message }: EmptyListProps) => (
   <View className="min-h-[400px] flex-1 items-center justify-center">
     {!isLoading ? (
       <View>
         <NoData />
-        <Text className="pt-4 text-center">Sorry! No data found</Text>
+        <Text className="pt-4 text-center" tx={message ?? 'common.noData'} />
       </View>
     ) : (
       <ActivityIndicator />
     )}
   </View>
 ));
+
+EmptyList.displayName = 'EmptyList';
+
+/* -------------------------------------------------------------------------- */
+/*                                   No Data                                  */
+/* -------------------------------------------------------------------------- */
 
 export const NoData = () => (
   <Svg width={200} height={200} viewBox="0 0 647.636 632.174">

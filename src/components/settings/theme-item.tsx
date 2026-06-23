@@ -1,15 +1,22 @@
+import { useColorScheme } from 'nativewind';
 import { useCallback, useMemo } from 'react';
 
-import type { OptionType } from '@/components/ui';
-import { Options, useModal } from '@/components/ui';
-import type { ColorSchemeType } from '@/lib';
-import { translate, useSelectedTheme } from '@/lib';
+import { Icon, Options, type OptionType, useModal } from '@/components/ui';
+import colors from '@/components/ui/colors';
+import { translate } from '@/lib';
+import {
+  type ColorSchemeType,
+  useSelectedTheme,
+} from '@/lib/hooks/use-selected-theme';
 
 import { Item } from './item';
 
 export const ThemeItem = () => {
   const { selectedTheme, setSelectedTheme } = useSelectedTheme();
   const modal = useModal();
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
+  const iconColor = isDark ? colors.neutral[400] : colors.neutral[500];
 
   const onSelect = useCallback(
     (option: OptionType) => {
@@ -39,6 +46,7 @@ export const ThemeItem = () => {
         text="settings.theme.title"
         value={theme?.label}
         onPress={modal.present}
+        icon={<Icon type="feather" name="moon" size={16} color={iconColor} />}
       />
       <Options
         ref={modal.ref}

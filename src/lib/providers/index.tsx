@@ -1,5 +1,5 @@
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
-import { ThemeProvider } from '@react-navigation/native';
+import { ThemeProvider } from 'expo-router';
 import { type ReactNode } from 'react';
 import { StyleSheet } from 'react-native';
 import FlashMessage from 'react-native-flash-message';
@@ -9,9 +9,21 @@ import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 import { APIProvider } from '../providers/api-provider';
 import { AuthProvider, useAuthProvider } from '../providers/auth-provider';
+import {
+  ImageViewerProvider,
+  useImageViewer,
+} from '../providers/image-view-provider';
+import { NotificationProvider } from '../providers/notification-provider';
 import { useThemeConfig } from '../use-theme-config';
 
-export { APIProvider, AuthProvider, useAuthProvider };
+export {
+  APIProvider,
+  AuthProvider,
+  ImageViewerProvider,
+  NotificationProvider,
+  useAuthProvider,
+  useImageViewer,
+};
 
 export function Providers({ children }: Readonly<{ children: ReactNode }>) {
   const theme = useThemeConfig();
@@ -26,10 +38,14 @@ export function Providers({ children }: Readonly<{ children: ReactNode }>) {
           <ThemeProvider value={theme}>
             <APIProvider>
               <AuthProvider>
-                <BottomSheetModalProvider>
-                  {children}
-                  <FlashMessage position="top" />
-                </BottomSheetModalProvider>
+                <NotificationProvider>
+                  <ImageViewerProvider>
+                    <BottomSheetModalProvider>
+                      {children}
+                      <FlashMessage position="top" />
+                    </BottomSheetModalProvider>
+                  </ImageViewerProvider>
+                </NotificationProvider>
               </AuthProvider>
             </APIProvider>
           </ThemeProvider>

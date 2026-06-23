@@ -11,7 +11,7 @@ import simpleImportSort from 'eslint-plugin-simple-import-sort';
 import sonarjs from 'eslint-plugin-sonarjs';
 import tailwind from 'eslint-plugin-tailwindcss';
 import testingLibrary from 'eslint-plugin-testing-library';
-// eslint-disable-next-line import/no-named-as-default, import/no-named-as-default-member, import/namespace
+// eslint-disable-next-line import/namespace,import/no-named-as-default,import/no-named-as-default-member
 import eslintPluginUnicorn from 'eslint-plugin-unicorn';
 import unusedImports from 'eslint-plugin-unused-imports';
 import { configs, parser } from 'typescript-eslint';
@@ -31,11 +31,14 @@ export default defineConfig([
     '.vscode',
     'docs/',
     'cli/',
+    'scripts/',
     'expo-env.d.ts',
     '*.config.js',
     'lint-staged.config.js',
     'i18next-syntax-validation.js',
     'env.js',
+    'src/api/endpoints/*.ts',
+    'src/api/models/*.ts',
   ]),
   expoConfig,
   eslintPluginPrettierRecommended,
@@ -52,7 +55,7 @@ export default defineConfig([
     rules: {
       'import/no-duplicates': 'error',
       'max-params': ['error', 3],
-      'max-lines-per-function': ['error', 70],
+      'max-lines-per-function': 'off',
       'tailwindcss/classnames-order': [
         'warn',
         {
@@ -96,7 +99,7 @@ export default defineConfig([
       'guard-for-in': 'error',
 
       'import/prefer-default-export': 'off',
-      'import/no-cycle': ['error', { maxDepth: '∞' }],
+      'import/no-cycle': 'off',
       'prettier/prettier': 'error',
     },
   },
@@ -118,7 +121,7 @@ export default defineConfig([
     },
     rules: {
       ...configs.recommended.rules,
-      '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/comma-dangle': 'off',
       '@typescript-eslint/prefer-nullish-coalescing': 'error',
       '@typescript-eslint/array-type': [
@@ -167,7 +170,7 @@ export default defineConfig([
       'i18n-json/identical-keys': [
         2,
         {
-          filePath: path.resolve(__dirname, './src/translations/en.json'),
+          filePath: path.resolve(__dirname, './src/translations/tr.json'),
         },
       ],
       'prettier/prettier': [

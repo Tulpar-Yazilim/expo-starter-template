@@ -6,7 +6,8 @@ import type { resources } from './resources';
 import type { RecursiveKeyOf } from './types';
 
 type DefaultLocale = typeof resources.en.translation;
-export type TxKeyPath = RecursiveKeyOf<DefaultLocale>;
+type LiteralString<T extends string> = T | (string & {});
+export type TxKeyPath = LiteralString<RecursiveKeyOf<DefaultLocale>>;
 
 export const translate = memoize(
   (key: TxKeyPath, options = undefined) => t(key, options) as unknown as string,

@@ -1,26 +1,11 @@
-import { Link, Redirect, SplashScreen, Tabs } from 'expo-router';
-import { useCallback, useEffect } from 'react';
+import { Link, Redirect, Tabs } from 'expo-router';
 
-import { Pressable, Text } from '@/components/ui';
-import {
-  Feed as FeedIcon,
-  Settings as SettingsIcon,
-  Style as StyleIcon,
-} from '@/components/ui/icons';
+import { Icon, Pressable, Text } from '@/components/ui';
 import { useAuthProvider, useIsFirstTime } from '@/lib';
 
 export default function TabLayout() {
   const { isAuthenticated, ready } = useAuthProvider();
   const [isFirstTime] = useIsFirstTime();
-  const hideSplash = useCallback(async () => {
-    await SplashScreen.hideAsync();
-  }, []);
-
-  useEffect(() => {
-    if (!ready) {
-      hideSplash();
-    }
-  }, [hideSplash, ready]);
 
   if (isFirstTime) {
     return <Redirect href="/onboarding" />;
@@ -34,7 +19,9 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Feed',
-          tabBarIcon: ({ color }) => <FeedIcon color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Icon type="feather" name="home" color={color} />
+          ),
           headerRight: () => <CreateNewPostLink />,
           tabBarButtonTestID: 'feed-tab',
         }}
@@ -43,7 +30,9 @@ export default function TabLayout() {
         name="style"
         options={{
           title: 'Style',
-          tabBarIcon: ({ color }) => <StyleIcon color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Icon type="feather" name="codesandbox" color={color} />
+          ),
           tabBarButtonTestID: 'style-tab',
         }}
       />
@@ -51,7 +40,9 @@ export default function TabLayout() {
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: ({ color }) => <SettingsIcon color={color} />,
+          tabBarIcon: ({ color }) => (
+            <Icon type="feather" name="settings" color={color} />
+          ),
           tabBarButtonTestID: 'settings-tab',
         }}
       />

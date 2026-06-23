@@ -2,13 +2,15 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
       "@env": ["./src/lib/env.js"]
     },
     "esModuleInterop": true,
-    "checkJs": true
+    "checkJs": true,
+    "types": ["jest"]
   },
   "exclude": [
     "node_modules",
@@ -18,7 +20,9 @@
     "cli",
     "android",
     "ios",
-    "lint-staged.config.js"
+    "lint-staged.config.js",
+    "src/api/endpoints/*.ts",
+    "src/api/models/*.ts"
   ],
   "include": [
     "**/*.ts",

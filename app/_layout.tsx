@@ -4,14 +4,14 @@ import '@/lib/i18n';
 
 import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
-import React, { useEffect } from 'react';
-import { useTranslation } from 'react-i18next';
+import React, { useCallback, useEffect } from 'react';
 import { AppState } from 'react-native';
 
 import interceptors from '@/api/common/interceptors';
 import {
   loadSelectedTheme,
   Providers,
+  translate,
   useAppStore,
   useAuthProvider,
   useIsFirstTime,
@@ -35,7 +35,6 @@ SplashScreen.setOptions({
 
 function GuardedStack() {
   const { isAuthenticated } = useAuthProvider();
-  const { t } = useTranslation();
   const [isFirstTime] = useIsFirstTime();
 
   return (
@@ -49,7 +48,7 @@ function GuardedStack() {
         <Stack.Screen
           name="update-password"
           options={{
-            title: t('updatePassword.title'),
+            title: translate('updatePassword.title'),
           }}
         />
       </Stack.Protected>
@@ -103,10 +102,21 @@ export default function RootLayout() {
 
 function RouterContent() {
   const { ready } = useAuthProvider();
+  const language = useAppStore((s) => s.language);
+
+  const hideSplash = useCallback(async () => {
+    await SplashScreen.hideAsync();
+  }, []);
+
+  useEffect(() => {
+    if (ready) {
+      hideSplash();
+    }
+  }, [ready]);
 
   if (!ready) {
     return <Stack />;
   }
 
-  return <GuardedStack />;
+  return <GuardedStack key={language} />;
 }

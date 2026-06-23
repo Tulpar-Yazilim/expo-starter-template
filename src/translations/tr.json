@@ -1,0 +1,210 @@
+{
+  "auth": {
+    "signIn": {
+      "buttons": {
+        "login": "Giriş Yap",
+        "signUp": "Kayıt Ol"
+      },
+      "fields": {
+        "email": "E-posta",
+        "password": "Şifre"
+      },
+      "forgotPasswordButton": "Şifremi Unuttum",
+      "newAccount": "Hesabınız yok mu?",
+      "signUp": "Zaten hesabınız var mı?",
+      "title": "Giriş Yap",
+      "validation": {
+        "emailRequired": "E-posta gerekli",
+        "invalidEmail": "Geçersiz e-posta formatı",
+        "passwordMinChars": "Şifre en az 6 karakter olmalıdır",
+        "passwordRequired": "Şifre gerekli",
+        "usernameRequired": "Kullanıcı adı gerekli"
+      }
+    },
+    "signUp": {
+      "error": {
+        "emailInvalid": "Geçersiz e-posta formatı",
+        "emailRequired": "E-posta gerekli",
+        "nameRequired": "İsim gerekli",
+        "passwordConfirmationRequired": "Şifre gerekli",
+        "passwordRequired": "Şifre gerekli",
+        "passwordsDoNotMatch": "Şifreler eşleşmiyor",
+        "shortPassword": "Şifre en az 6 karakter olmalıdır"
+      },
+      "fields": {
+        "email": "E-posta",
+        "name": "İsim",
+        "password": "Şifre",
+        "passwordConfirmation": "Şifre onayı"
+      },
+      "signInButton": "Giriş yap",
+      "signUpButton": "Kayıt Ol",
+      "title": "Hesap oluştur"
+    }
+  },
+  "common": {
+    "actions": "İşlemler",
+    "active": "Aktif",
+    "add": "Ekle",
+    "apply": "Uygula",
+    "april": "Nisan",
+    "august": "Ağustos",
+    "back": "Geri",
+    "branch": "Şube",
+    "cancel": "İptal",
+    "cancelled": "İptal Edildi",
+    "clearAll": "Tümünü Temizle",
+    "close": "Kapat",
+    "completed": "Tamamlandı",
+    "confirm": "Onayla",
+    "confirmed": "Onaylandı",
+    "country": "Ülke",
+    "create": "Oluştur",
+    "currencies": "Para Birimleri",
+    "currency": "Para Birimi",
+    "december": "Aralık",
+    "delete": "Sil",
+    "details": "Detaylar",
+    "edit": "Düzenle",
+    "error": "Bir hata oluştu",
+    "errorOccurred": "Beklenmeyen bir hata oluştu. Lütfen tekrar deneyin.",
+    "february": "Şubat",
+    "filter": "Filtrele",
+    "inactive": "Pasif",
+    "january": "Ocak",
+    "july": "Temmuz",
+    "june": "Haziran",
+    "loading": "Yükleniyor...",
+    "loadingError": "İçerik yüklenirken bir hata oluştu",
+    "loadingMessage": "Lütfen bekleyin...",
+    "march": "Mart",
+    "may": "Mayıs",
+    "more": "Daha Fazla",
+    "no": "Hayır",
+    "noData": "Henüz veri eklenmedi",
+    "noPhotos": "Henüz fotoğraf yüklenmedi",
+    "notAuthorized": "Bu işlemi gerçekleştirme yetkiniz yok",
+    "notFound": "Kayıt bulunamadı",
+    "november": "Kasım",
+    "october": "Ekim",
+    "options": "Seçenekler",
+    "other": "Diğer",
+    "pending": "Beklemede",
+    "print": "Yazdır",
+    "reset": "Sıfırla",
+    "save": "Kaydet",
+    "search": "Ara...",
+    "select": "{{name}} Seç",
+    "selectAll": "Tümünü Seç",
+    "selected": "Seçildi",
+    "september": "Eylül",
+    "share": "Paylaş",
+    "shareError": "Paylaşım sırasında bir hata oluştu",
+    "shortMonths": {
+      "apr": "Nis",
+      "aug": "Ağu",
+      "dec": "Ara",
+      "feb": "Şub",
+      "jan": "Oca",
+      "jul": "Tem",
+      "jun": "Haz",
+      "mar": "Mar",
+      "may": "May",
+      "nov": "Kas",
+      "oct": "Eki",
+      "sep": "Eyl"
+    },
+    "status": "Durum",
+    "successMessage": "İşlem başarıyla tamamlandı.",
+    "transferring": "Transfer Ediliyor",
+    "update": "Güncelle",
+    "version": "Sürüm",
+    "view": "Görüntüle",
+    "view_all": "Tümünü Görüntüle",
+    "yes": "Evet"
+  },
+  "forgotPassword": {
+    "buttonLabel": "Sıfırlama Talimatları Gönder",
+    "description": "Aşağıya e-posta adresinizi girin, şifrenizi sıfırlamak için talimatları göndereceğiz.",
+    "emailInvalidFormatFormError": "Geçersiz e-posta formatı",
+    "emailLabel": "E-posta Adresi",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "errorMessage": "Talimatlar gönderilirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "instructions": "Şifrenizi sıfırlamak için bir bağlantı içeren e-posta alacaksınız. Lütfen gelen kutunuzu kontrol edin.",
+    "successMessage": "Şifrenizi sıfırlamak için talimatlar e-posta adresinize gönderildi.",
+    "title": "Şifrenizi mi unuttunuz?"
+  },
+  "onboarding": {
+    "button_label": "Başlayalım",
+    "features": {
+      "developer_experience": "Geliştirici deneyimi + Verimlilik",
+      "minimal_code": "Minimum kod ve bağımlılık",
+      "production_ready": "Üretime hazır",
+      "well_maintained_libraries": "İyi bakımlı üçüncü taraf kütüphaneler"
+    },
+    "subtitle": "Mobil uygulamanızı geliştirmenin doğru yolu",
+    "title": "React Native Şablonu"
+  },
+  "settings": {
+    "about": "Hakkında",
+    "account": {
+      "email": "E-posta",
+      "name": "İsim",
+      "password": "Şifre",
+      "title": "Hesap"
+    },
+    "app_name": "Uygulama Adı",
+    "arabic": "Arapça",
+    "deleteAccount": {
+      "cancel": "İptal",
+      "confirmMessage": "Hesabınızı silmek istediğinizden emin misiniz? Bu işlem geri alınamaz.",
+      "confirmTitle": "Silmeyi Onayla",
+      "delete": "Sil",
+      "title": "Hesabı sil"
+    },
+    "english": "İngilizce",
+    "general": "Genel",
+    "github": "Github",
+    "language": "Dil",
+    "links": "Bağlantılar",
+    "logout": "Çıkış Yap",
+    "logoutConfirm": {
+      "message": "Çıkış yapmak istediğinizden emin misiniz?"
+    },
+    "more": "Daha Fazla",
+    "privacy": "Gizlilik Politikası",
+    "rate": "Değerlendir",
+    "share": "Paylaş",
+    "support": "Destek",
+    "supportUs": "Bizi Destekle",
+    "terms": "Hizmet Koşulları",
+    "theme": {
+      "dark": "Koyu",
+      "light": "Açık",
+      "system": "Sistem",
+      "title": "Tema"
+    },
+    "title": "Ayarlar",
+    "version": "Sürüm",
+    "website": "Web Sitesi"
+  },
+  "updatePassword": {
+    "buttonLabel": "Şifreyi Güncelle",
+    "confirmPasswordLabel": "Şifreyi Onayla",
+    "confirmPasswordPlaceholder": "Yeni şifreyi tekrar girin",
+    "description": "Hesabınız için yeni bir şifre girin.",
+    "error": {
+      "passwordsMustMatch": "Şifreler eşleşmelidir",
+      "shortPassword": "Şifre en az {{minChars}} karakter olmalıdır"
+    },
+    "errorMessage": "Şifreniz güncellenirken bir hata oluştu. Lütfen tekrar deneyin.",
+    "passwordLabel": "Yeni Şifre",
+    "passwordPlaceholder": "Yeni şifreyi girin",
+    "successMessage": "Şifreniz başarıyla güncellendi.",
+    "title": "Şifreyi Güncelle"
+  },
+  "welcome": "Uygulama sitesine hoş geldiniz",
+  "www": {
+    "invalidUrl": "Geçersiz URL"
+  }
+}
