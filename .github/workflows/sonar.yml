@@ -27,6 +27,7 @@ jobs:
         run: yarn test:ci
 
       - name: SonarQube Scan
+        if: env.SONAR_TOKEN != '' && env.SONAR_HOST_URL != '' && env.SONAR_PROJECT != ''
         uses: sonarsource/sonarqube-scan-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
@@ -42,3 +43,7 @@ jobs:
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
             -Dsonar.coverage.exclusions=**/node_modules/**,**/storage/**,**/**.config.js,**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx,**/icons/**,**/docs/**,**/cli/**,**/android/**,**/ios/**,env.js,app.config.ts,jest-setup.ts
             -Dsonar.exclusions=**/docs/**,**/__mocks__/**,**/__tests__/**,**/*.test.ts,**/*.test.tsx,**/*.spec.ts,**/*.spec.tsx,app.config.ts,jest-setup.ts
+
+      - name: ℹ️ SonarQube configuration missing
+        if: env.SONAR_TOKEN == '' || env.SONAR_HOST_URL == '' || env.SONAR_PROJECT == ''
+        run: echo "⚠️ SonarQube secrets not configured. To enable SonarQube analysis, add SONAR_TOKEN, SONAR_URL, and SONAR_PROJECT to repository secrets."
