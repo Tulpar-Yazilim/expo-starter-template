@@ -24,9 +24,9 @@ export default defineConfig({
       components: {
         LastUpdated: './src/components/LastUpdated.astro',
       },
-      social: {
-        github: 'https://github.com/Tulpar-Yazilim/expo-starter-template',
-      },
+      social: [
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/Tulpar-Yazilim/expo-starter-template' },
+      ],
       head: [
         {
           tag: 'meta',
