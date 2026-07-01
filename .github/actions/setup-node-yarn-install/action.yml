@@ -16,13 +16,14 @@ description: 'Setup  Node + YARN + Install Dependencies'
 runs:
   using: 'composite'
   steps:
-    - uses: mskelton/setup-yarn@v3
-      name: Install yarn
-
     - uses: actions/setup-node@v4
       name: Install Node.js
       with:
         node-version-file: '.nvmrc'
+
+    - name: Enable Yarn via Corepack
+      run: corepack enable yarn
+      shell: bash
 
     - name: 📦 Cache yarn dependencies
       uses: actions/cache@v4
