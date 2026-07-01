@@ -107,7 +107,20 @@ export const Modal = forwardRef(
 
     useImperativeHandle(
       ref,
-      () => (modal.ref.current as BottomSheetModal) || null,
+      () =>
+        ({
+          present: (data?: never) => modal.ref.current?.present(data),
+          dismiss: (config) => modal.ref.current?.dismiss(config),
+          snapToIndex: (index, config) =>
+            modal.ref.current?.snapToIndex(index, config),
+          snapToPosition: (position, config) =>
+            modal.ref.current?.snapToPosition(position, config),
+          expand: (config) => modal.ref.current?.expand(config),
+          collapse: (config) => modal.ref.current?.collapse(config),
+          close: (config) => modal.ref.current?.close(config),
+          forceClose: (config) => modal.ref.current?.forceClose(config),
+        }) satisfies BottomSheetModal,
+      [],
     );
 
     const renderHandleComponent = useCallback(
