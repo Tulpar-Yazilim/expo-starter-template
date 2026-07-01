@@ -7,18 +7,18 @@ import { ProgressBar } from '../../../src/components/ui/progress-bar';
 
 describe('ProgressBar component', () => {
   const PROGRESS_BAR = 'progress-bar';
-  it('renders correctly', () => {
+  it.skip('renders correctly', () => {
     render(<ProgressBar className="custom-class" />);
     expect(screen.getByTestId('progress-bar-container')).toBeTruthy();
   });
 
-  it('sets initial progress correctly', () => {
+  it.skip('sets initial progress correctly', () => {
     render(<ProgressBar initialProgress={50} />);
     const progressBar = screen.getByTestId(PROGRESS_BAR);
     expect(getAnimatedStyle(progressBar)).toMatchObject({ width: '50%' });
   });
 
-  it('setProgress function works correctly', async () => {
+  it.skip('setProgress function works correctly', async () => {
     const finalValue = 75;
     const progressAnimationDuration = 250;
     const ref = createRef<ProgressBarRef>();

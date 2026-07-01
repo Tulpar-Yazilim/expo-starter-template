@@ -2,16 +2,6 @@ import { Linking } from 'react-native';
 
 import { createSelectors, openLinkInBrowser } from '../../src/lib/utils';
 
-// Mock React Native Linking
-jest.mock('react-native', () => ({
-  Linking: {
-    canOpenURL: jest.fn(),
-    openURL: jest.fn(),
-  },
-}));
-
-const mockLinking = Linking as jest.Mocked<typeof Linking>;
-
 describe('utils', () => {
   beforeEach(() => {
     jest.clearAllMocks();
@@ -20,30 +10,30 @@ describe('utils', () => {
   describe('openLinkInBrowser', () => {
     it('should open URL when canOpenURL returns true', async () => {
       const url = 'https://example.com';
-      mockLinking.canOpenURL.mockResolvedValue(true);
+      jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(true);
+      jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined);
 
       openLinkInBrowser(url);
 
-      expect(mockLinking.canOpenURL).toHaveBeenCalledWith(url);
+      expect(Linking.canOpenURL).toHaveBeenCalledWith(url);
 
-      // Wait for the promise to resolve
       await new Promise((resolve) => setTimeout(resolve, 0));
 
-      expect(mockLinking.openURL).toHaveBeenCalledWith(url);
+      expect(Linking.openURL).toHaveBeenCalledWith(url);
     });
 
     it('should not open URL when canOpenURL returns false', async () => {
       const url = 'https://example.com';
-      mockLinking.canOpenURL.mockResolvedValue(false);
+      jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false);
+      jest.spyOn(Linking, 'openURL').mockResolvedValue(undefined);
 
       openLinkInBrowser(url);
 
-      expect(mockLinking.canOpenURL).toHaveBeenCalledWith(url);
+      expect(Linking.canOpenURL).toHaveBeenCalledWith(url);
 
-      // Wait for the promise to resolve
       await new Promise((resolve) => setTimeout(resolve, 0));
 
-      expect(mockLinking.openURL).not.toHaveBeenCalled();
+      expect(Linking.openURL).not.toHaveBeenCalled();
     });
   });
 

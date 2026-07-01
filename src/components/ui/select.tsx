@@ -436,7 +436,10 @@ export const Select = ({
         </Pressable>
 
         {error && (
-          <Text className="mt-1 text-sm text-danger-400 dark:text-danger-600">
+          <Text
+            className="mt-1 text-sm text-danger-400 dark:text-danger-600"
+            testID={`${testID}-error`}
+          >
             {error}
           </Text>
         )}

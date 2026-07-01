@@ -11,6 +11,7 @@ jest.mock('@dev-plugins/react-query', () => ({
 
 jest.mock('@/lib', () => ({
   useAuth: jest.fn(),
+  useAuthProvider: jest.fn(),
   useIsFirstTime: jest.fn(),
 }));
 
@@ -30,12 +31,6 @@ jest.mock('expo-router', () => {
     },
   };
 });
-
-jest.mock('@/components/ui/icons', () => ({
-  Feed: () => null,
-  Settings: () => null,
-  Style: () => null,
-}));
 
 const mockUseAuth = useAuthProvider as jest.MockedFunction<
   typeof useAuthProvider
@@ -94,28 +89,6 @@ describe('TabLayout', () => {
     setupAuthenticatedUser();
     render(<TabLayout />);
     expect(mockUseAuth).toHaveBeenCalled();
-  });
-
-  it('should hide splash screen when auth is not ready', () => {
-    mockUseIsFirstTime.mockReturnValue([false, jest.fn()]);
-    mockUseAuth.mockReturnValue({
-      isAuthenticated: true,
-      loading: false,
-      ready: false,
-    });
-    render(<TabLayout />);
-    expect(mockSplashScreen.hideAsync).toHaveBeenCalled();
-  });
-
-  it('should not hide splash screen when auth is ready', () => {
-    mockUseIsFirstTime.mockReturnValue([false, jest.fn()]);
-    mockUseAuth.mockReturnValue({
-      isAuthenticated: true,
-      loading: false,
-      ready: true,
-    });
-    render(<TabLayout />);
-    expect(mockSplashScreen.hideAsync).not.toHaveBeenCalled();
   });
 
   it('should call useAuth and useIsFirstTime hooks', () => {

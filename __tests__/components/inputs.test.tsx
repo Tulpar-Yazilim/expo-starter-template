@@ -61,7 +61,8 @@ describe('Inputs component', () => {
     expectTextToBeVisible('Default');
     expectTextToBeVisible('Error');
     expectTextToBeVisible('Focused');
-    expectTextToBeVisible('Select');
+    // Use getAllByText and check the first one exists
+    expect(screen.getAllByText('Select').length).toBeGreaterThan(0);
   });
 
   it('should render error message for error input', () => {

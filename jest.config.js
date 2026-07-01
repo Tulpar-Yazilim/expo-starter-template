@@ -14,7 +14,9 @@ module.exports = {
   ],
   moduleFileExtensions: ['js', 'ts', 'tsx'],
   transformIgnorePatterns: [
-    `node_modules/(?!(?:.yarn/)?((jest-)?react-native|@react-native(-community)?|expo(nent)?|@expo(nent)?/.*|@expo-google-fonts/.*|react-navigation|@react-navigation/.*|@unimodules/.*|unimodules|@sentry/.*|native-base|react-native-svg))`,
+    '/node_modules/(?!(.pnpm|react-native|@react-native|@react-native-community|expo|@expo|@expo-google-fonts|react-navigation|@react-navigation|@sentry/react-native|native-base|standard-navigation|@gorhom|tailwind-variants|react-native-reanimated|react-native-worklets|@dev-plugins|@tanstack|@shopify))',
+    '/node_modules/react-native-reanimated/plugin/',
+    '/node_modules/@react-native/babel-preset/',
   ],
   coverageReporters: [
     'json-summary',

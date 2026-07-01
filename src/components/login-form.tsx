@@ -11,8 +11,8 @@ import { translate } from '@/lib';
 const MIN_CHARS = 6;
 const schema = object({
   username: string({
-    required_error: translate('auth.signIn.validation.usernameRequired'),
-  }),
+    required_error: translate('auth.signIn.validation.emailRequired'),
+  }).email(translate('auth.signIn.validation.emailInvalid')),
   password: string({
     required_error: translate('auth.signIn.validation.passwordRequired'),
   }).min(MIN_CHARS, translate('auth.signIn.validation.passwordMinChars')),
@@ -30,10 +30,6 @@ export const LoginForm = ({
   isLoading = false,
 }: LoginFormProps) => {
   const { handleSubmit, control } = useForm<FormType>({
-    values: {
-      username: 'emilys',
-      password: 'emilyspass',
-    },
     resolver: zodResolver(schema),
   });
   return (

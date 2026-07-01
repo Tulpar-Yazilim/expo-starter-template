@@ -1,30 +1,25 @@
-import { type MMKV } from 'react-native-mmkv';
-
 import { getItem, removeItem, setItem, storage } from '@/lib/storage';
+
+jest.mock('react-native-mmkv', () => ({
+  createMMKV: jest.fn(() => ({
+    getString: jest.fn(),
+    set: jest.fn(),
+    remove: jest.fn(),
+  })),
+}));
+
+const mockStorage = storage as unknown as {
+  getString: jest.Mock;
+  set: jest.Mock;
+  remove: jest.Mock;
+};
 
 const TEST_VALUE = 123;
 const TEST_NUMBER = 42;
 
-// Mock react-native-mmkv
-jest.mock('react-native-mmkv', () => ({
-  MMKV: jest.fn().mockImplementation(() => ({
-    getString: jest.fn(),
-    set: jest.fn(),
-    delete: jest.fn(),
-  })),
-}));
-
-function setupMockStorage() {
-  const mockStorage = storage as jest.Mocked<MMKV>;
-  jest.clearAllMocks();
-  return mockStorage;
-}
-
 describe('storage utilities', () => {
-  let mockStorage: jest.Mocked<MMKV>;
-
   beforeEach(() => {
-    mockStorage = setupMockStorage();
+    jest.clearAllMocks();
   });
 
   describe('getItem', () => {

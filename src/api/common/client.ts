@@ -1,8 +1,8 @@
-import axios, { type AxiosRequestConfig } from 'axios';
+import { type AxiosRequestConfig, create as createAxiosInstance } from 'axios';
 
 import { Env } from '@/lib/env';
 
-export const client = axios.create({
+export const client = createAxiosInstance({
   baseURL: Env.API_URL,
   timeout: 10 * 60 * 1000, // 10 minutes × 60 seconds × 1000 ms = 600.000 ms
 });
